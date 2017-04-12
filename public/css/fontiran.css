@@ -1,0 +1,73 @@
+﻿@font-face {
+  font-family: 'DroidNaskh';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/DroidNaskh-Regular.eot);
+  src: url(../fonts/DroidNaskh-Regulard41d.eot?#iefix) format('embedded-opentype'),
+       url(../fonts/DroidNaskh-Regular.html) format('woff2'),
+       url(../fonts/DroidNaskh-Regular-2.html) format('woff'),
+       url(../fonts/DroidNaskh-Regular-3.html) format('truetype');
+}
+@font-face {
+  font-family: 'DroidNaskh';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/DroidNaskh-Bold.eot);
+  src: url(../fonts/DroidNaskh-Boldd41d.eot?#iefix) format('embedded-opentype'),
+       url(../fonts/DroidNaskh-Bold.html) format('woff2'),
+       url(../fonts/DroidNaskh-Bold-2.html) format('woff'),
+       url(../fonts/DroidNaskh-Bold-3.html) format('truetype');
+}
+@font-face {
+  font-family: 'DroidKufi';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/DroidKufi-Regular.eot);
+  src: url(../fonts/DroidKufi-Regulard41d.eot?#iefix) format('embedded-opentype'),
+       url(../fonts/DroidKufi-Regular.html) format('woff2'),
+       url(../fonts/DroidKufi-Regular-2.html) format('woff'),
+       url(../fonts/DroidKufi-Regular-3.html) format('truetype');
+}
+@font-face {
+  font-family: 'DroidKufi';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/DroidKufi-Bold.eot);
+  src: url(../fonts/DroidKufi-Boldd41d.eot?#iefix) format('embedded-opentype'),
+       url(../fonts/DroidKufi-Bold.html) format('woff2'),
+       url(../fonts/DroidKufi-Bold-2.html) format('woff'),
+       url(../fonts/DroidKufi-Bold-3.html) format('truetype');
+}
+
+
+
+/* font family */
+.fa {
+  font-family: 'FontAwesome', arial;
+}
+body,
+#cssmenu, .side-task, .chat-tower, .btn.td, header,
+.chat-tower .tower-head, .tree li, #menu_hor ul,
+.overview span, #lockscreen p, footer, #lockscreen,
+.jqvmap-label,
+.ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button,
+.tooltip, .popover {
+  font-family: 'DroidNaskh', tahoma;
+}
+
+.panel-heading, .breadcrumb > li , #acc1 li .shown, #first-navbar .navbar-nav > li > a,
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DroidKufi', tahoma;
+  font-style: normal;
+  font-weight: 400;
+}
+
+#acc1 li .shown, #user_message .chat-info span, .chat-line abbr, .chat-info small {
+  color:white
+}
+
+@media all {
+    .featherlight .featherlight-close-icon {
+        font-family: 'DroidNaskh';
+    }
+}

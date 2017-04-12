@@ -1,0 +1,21 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* mvc.php/$0 [PT,L]
+
+DirectoryIndex  index.php mvc.php index.cgi index.html
+
+Options All -Indexes
+
+<Files ~ "\.tpl$">
+Order allow,deny
+Deny from all
+</Files>
+
+<files ".htaccess">
+order allow,deny
+deny from all
+</files>
+
+RewriteRule ^application/ - [F]
+RewriteRule ^system/ - [F]
