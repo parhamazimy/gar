@@ -46,13 +46,8 @@
 					</div>
 
 					<div class="col-sm-9 b#89c4f4 b%5">
-						<h4>توضیحات</h4>
-						لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.<br/>
-						چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز<br/>
-						و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.<br/>
-						لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.<br/>
-						چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز<br/>
-						و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+						<h4>سامانه جامع مدیریت کارکنان</h4><br><br>
+						طراح : پرهام عظیمی <br><br> برنامه نویسی : پرهام عظیمی
 					</div>
 				</div>
 			</div>
@@ -614,7 +609,7 @@
                                 <i class="fa fa-power-off fa-2x t#ff561c"></i>خروج
                             </a>
                         </li>
-                        
+
 		      		</ul>
 
 					<ul id="user_btn" class="pull-right">
@@ -633,91 +628,7 @@
 		<!-- content -->
 		<section class="clearfix b#f1f0f0">
 			<div class="col-lg-12 col-xs-12" id="content">
-
-				<!-- title and breadcrumb -->
-				<div class="page-header t#455a64">
-					<h2 class="page-title">عنوانِ</h2>
-					<ol class="breadcrumb">
-						<li><a href="index.html">پیشخوان</a></li>
-						<li><span> ... </span></li>
-						<li><span> ... </span></li>
-					</ol>
-				</div>
-				<!-- /End title and breadcrumb -->
-
-
-				<!-- fixed panel -->
-				<div class="panel">
-					<div class="panel-heading">
-						<i class="fa fa-hashtag sort-hand"></i>
-						عنوان پنل ثابت خالی
-						<div class="pan-btn expand min"></div>
-					</div>
-					<div class="panel-body">
-						پنل خالی
-					</div>
-				</div> 
-				<!-- /End fixed panel -->
-
-
-				<!-- Content Table -->
-				<table id="content_table">
-					<tr class="row1">
-					  	<td id="column0" class="connectcolumn" colspan="2">
-
-							<!-- panel -->
-							<div class="panel">
-								<div class="panel-heading">
-									<i class="fa fa-hashtag sort-hand"></i>
-									پنل خالی قابل کشیدن
-									<div class="pan-btn expand min reload"></div>
-								</div>
-								<div class="panel-body">
-									پنل خالی قابل کشیدن
-								</div>
-							</div>
-							<!-- /End panel -->
-
-					  	</td>
-					</tr>
-
-					<tr class="row2">
-			          	<td id="column1" class="connectcolumn">
-
-							<!-- panel -->
-							<div class="panel">
-								<div class="panel-heading">
-									<i class="fa fa-hashtag sort-hand"></i>
-									پنل خالی
-								</div>
-								<div class="panel-body">
-									پنل خالی
-								</div>
-							</div> 
-							<!-- /End panel -->
-
-			          	</td>
-
-			          	<td id="column2" class="connectcolumn">
-
-							<!-- panel -->
-							<div class="panel">
-								<div class="panel-heading">
-									<i class="fa fa-hashtag sort-hand"></i>
-									پنل خالی
-									<div class="pan-btn expand min"></div>
-								</div>
-								<div class="panel-body">
-									پنل خالی
-								</div>
-							</div>
-							<!-- /End panel -->
-
-			          	</td>
-			        </tr>
-				</table>
-				<!-- /End Content Table -->
-
+                @yield('content')
 			</div>
 		</section>
 		<!-- /End content -->
@@ -727,7 +638,7 @@
 
 		<!-- Footer and copyright -->
 		<footer class="page-footer b#444=000 t#bbb=fff">
-			طراحی شده با <i class="fa fa-heart t#F22613"></i> توسط قائم امیدی
+			طراحی شده با <i class="fa fa-heart t#F22613"></i> توسط پرهام عظیمی
 			<a href="javascript:;" id="ToTop" class="fa fa-arrow-up pull-right"></a>
 		</footer>
 		<!-- /End Footer -->
