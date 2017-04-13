@@ -11,7 +11,8 @@ class admin extends CI_Controller {
 
     public function index()
     {
-        echo "hello";
+        $this->blade->data('title','داشبورد پنل مدیریت');
+        $this->blade->display('admin.masteradmin');
 
 
     }
