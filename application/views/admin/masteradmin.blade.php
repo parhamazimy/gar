@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-sm-9 b#89c4f4 b%5">
-                    <h4>سامانه جامع مدیریت کارکنان</h4><br><br>
+                    <h4>سامانه جامع مدیریت پادگان</h4><br><br>
                     طراح : پرهام عظیمی <br><br> برنامه نویسی : پرهام عظیمی
                 </div>
             </div>
@@ -82,20 +82,16 @@
                         <div id="mega_menu" class="t#333 b#ffb b%9">
 
                             <ul class="col-sm-4 icon">
-                                <li><h4>پنل مدیریت سازمان</h4></li>
+                                <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-eye"></i>مشاهده درخواست</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>افراد عیر حاضر در مجموعه</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
                             </ul>
                             <ul class="col-sm-4 icon">
-                                <li><h4>پنل مدیریت سازمان</h4></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-sign-language"></i>ثبت تنبیهی و تشویقی</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-hourglass"></i>ثبت تاخیر</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-recycle"></i>ثبت اضافه خدمت ناشی از خلاء</a></li>
+                                <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-plus"></i>ثبت کاربر جدید</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-hotel"></i>کارکنان در مرخصی</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
                             </ul>
 
 
@@ -103,7 +99,7 @@
                                 <li><h4>{{$title}}</h4></li>
                                 <li><img src="{{$root}}public/img/sazman.jpg" alt="بارگذاری نشد"></li>
                                 <li>
-                                    سامانه جامع مدیریت کارکنان سازمان
+                                    سامانه جامع مدیریت کارکنان پادگان
                                 </li>
                             </ul>
                         </div>
@@ -556,15 +552,8 @@
                     <div class="admin-name col-xs-7"> آلبرت اینشتین </div>
                 </div>
                 <div class="clearfix">
-                    <div class="col-xs-4 text-center">
-                        <a href="#"><i class="fa fa-key fa-2x"></i></a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                        <a href="#"><i class="fa fa-envelope-o fa-2x"></i></a>
-                        <span class="label blink label-danger admin-alert">4</span>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                        <a href="#"><i class="fa fa-power-off fa-2x"></i></a>
+                    <div class="col-xs-12 text-center">
+                        <p>کد پرسنلی : <strong>1231231354654564</strong></p>
                     </div>
                 </div>
                 <span id="admin_close" class="fa fa-times fa-2x"></span>
@@ -578,12 +567,6 @@
                     <!-- Dashboard -->
                     <li>
                         <a href="index.html">
-                            <i class="fa fa-tachometer t#cd6724"></i>
-                            پیشخوان
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.html">
                             <i class="fa fa-users t#ff561c"></i> ویرایش پروفایل
                         </a>
                     </li>
@@ -593,26 +576,6 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="index.html" class="b#333 b%0=05 waves-effect">
-                            <i class="fa fa-sign-language t#1b99cf"></i>تنبیهی و تشویقی
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.html" class="b#333 b%0=05 waves-effect">
-                            <i class="fa fa-hourglass t#46c35f"></i>مرخصی
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.html" class="b#333 b%0=05 waves-effect">
-                            <i class="fa fa-tasks t#cd6724"></i>اضافه خدمت
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-clock-o t#ff561c"></i>ثبت تاخیر
-                        </a>
-                    </li>
                     <li>
                         <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-user-times t#46c35f"></i>افراد غیر حاضر

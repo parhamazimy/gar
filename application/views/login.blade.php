@@ -112,7 +112,7 @@
 
 <body>
 
-	<h1 align="center">سامانه جامع مدیریت سازمان</h1>
+	<h1 align="center">سامانه جامع مدیریت پادگان</h1>
 
 	<!-- multistep form -->
 	{!! form_open('login/index', ' id="msform"') !!}
@@ -139,7 +139,7 @@
 		</fieldset>
 
 
-	</form>
+	{!! form_close() !!}
 
 
 	<!-- downloaded scripts (for all pages) -->

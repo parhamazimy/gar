@@ -9,7 +9,7 @@ class admin extends CI_Controller {
         $this->blade->data( 'root' , base_url() );
         if(!$this->session->has_userdata('id') ){
             redirect('login');
-        }elseif( $this->session->userdata('id' != 0) ){
+        }elseif( $this->session->userdata('access') != 0){
             redirect('login');
         }
     }
@@ -17,7 +17,7 @@ class admin extends CI_Controller {
     public function index()
     {
         $this->blade->data('title','داشبورد پنل مدیریت');
-        $this->blade->display('admin.masteradmin');
+        $this->blade->display('admin.profile');
 
 
     }
