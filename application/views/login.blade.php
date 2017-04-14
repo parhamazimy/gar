@@ -18,7 +18,7 @@
 
 		html {
 			min-height: 100%;
-			background: linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),  url('public/img/register.png');
+			background: linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),  url('{{$root}}public/img/register.png');
 		}
 		body {
 			padding-top: 50px;
@@ -112,18 +112,20 @@
 
 <body>
 
-	<h1 align="center">سامانه مدیریت سازمان</h1>
+	<h1 align="center">سامانه جامع مدیریت سازمان</h1>
 
 	<!-- multistep form -->
-	<form id="msform">
+	{!! form_open('login/index', ' id="msform"') !!}
 
 		<!-- fieldsets -->
 		<fieldset>
-			<div class="alert b#ffa1a1" style="background-color: rgb(255, 161, 161);padding: 4px;margin: 10px">
-				<strong style="color: #c30302">خطا !</strong>کد ملی یا رمز عبور صحیح نمی باشد .
-			</div>
+			@if(!empty($message))
+				<div class="alert b#ffa1a1" style="background-color: rgb(255, 161, 161);padding: 4px;margin: 10px">
+					<strong style="color: #c30302">خطا !</strong>{!! $message !!}
+				</div>
+			@endif
 			<h2 class="fs-title">همین حالا وارد شوید</h2>
-			<input type="text" name="email" placeholder="کد ملی" />
+			<input type="text" name="username" placeholder="کد ملی" />
 			<input type="password" name="pass" placeholder="رمزعبور" />
 			<input type="submit" class="submit action-button" value="ورود" />
 		</fieldset>

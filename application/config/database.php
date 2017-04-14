@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn'	=> '',
-    'hostname' => 'localhost',
+    'dsn'   => 'mysql:host=localhost;dbname=garrison',
+//    'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
-    'database' => 'test',
-    'dbdriver' => 'mysqli',
+    'database' => 'garrison',
+    'dbdriver' => 'pdo',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),
