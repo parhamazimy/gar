@@ -7515,7 +7515,7 @@ th {
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    text-align: left !important;
+    text-align: right!important;
   }
 }
 .form-horizontal .has-feedback .form-control-feedback {

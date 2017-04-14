@@ -14,6 +14,15 @@ class model_users extends CI_Model
         $this->db->where('password',$pass);
         return $this->db->get( $this->table )->row() ;
     }
+    function find($id){
+        $this->db->where('id',$id);
+        return $this->db->get($this->table)->row();
+    }
+    public function update($array)
+    {
+        $this->db->update($this->table, $array);
+        return $this->db->affected_rows();
+    }
 
 
 }
