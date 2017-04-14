@@ -9,6 +9,9 @@ class login extends CI_Controller
         $this->load->helper('url');
         $this->blade->data( 'root' , base_url() );
         $this->load->helper('form');
+        if( $this->session->has_userdata('id') ){
+            $this->session->unset_all();
+        }
     }
     function index()
     {
@@ -29,7 +32,29 @@ class login extends CI_Controller
                 if( ! $users ){
                     $this->blade->data('message','نام کاربری یا رمز عبور اشتباه می باشد .');
                 }else{
-                    var_dump($users);
+                    $this->session->set_userdata('id',$users->id);
+                    $this->session->set_userdata('pic',$users->pic);
+                    $this->session->set_userdata('access',$users->access);
+                    $this->session->set_userdata('name',$users->name);
+                    $this->session->set_userdata('family',$users->family);
+                    if($users->access == 0){
+                        redirect('admin');
+                    }
+                    elseif ($users->access == 1){
+                        redirect('campsoldier');
+                    }
+                    elseif ($users->access == 2){
+                        redirect('campcarde');
+                    }
+                    elseif ($users->access == 3){
+                        redirect('personalsoldier');
+                    }
+                    elseif ($users->access == 4){
+                        redirect('personalcarde');
+                    }
+                    else{
+                        die('error accsess !');
+                    }
                 }
 
             }

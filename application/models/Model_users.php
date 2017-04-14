@@ -12,7 +12,7 @@ class model_users extends CI_Model
     function login($username,$pass){
         $this->db->where('nationalcode',$username);
         $this->db->where('password',$pass);
-        return $this->db->get( $this->table )->result() ;
+        return $this->db->get( $this->table )->row() ;
     }
 
 

@@ -7,6 +7,11 @@ class admin extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->blade->data( 'root' , base_url() );
+        if(!$this->session->has_userdata('id') ){
+            redirect('login');
+        }elseif( $this->session->userdata('id' != 0) ){
+            redirect('login');
+        }
     }
 
     public function index()

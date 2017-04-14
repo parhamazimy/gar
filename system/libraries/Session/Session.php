@@ -823,6 +823,17 @@ class CI_Session {
 
 		unset($_SESSION[$key]);
 	}
+	public function unset_all()
+    {
+        $user_data = $this->all_userdata();
+
+        foreach ($user_data as $key => $value) {
+            if ($key != 'session_id' && $key != 'ip_address' && $key != 'user_agent' && $key != 'last_activity') {
+                $this->unset_userdata($key);
+            }
+        }
+        session_destroy();
+    }
 
 	// ------------------------------------------------------------------------
 
