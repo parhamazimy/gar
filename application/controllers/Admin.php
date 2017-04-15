@@ -183,4 +183,50 @@ class admin extends CI_Controller {
         $this->blade->data('users',$users);
         $this->blade->display('admin.users');
     }
+    //////////////////////////
+    //
+    //
+    //////////////////////////
+    function edit(){
+        $this->blade->data('title','ویرایش کاربر');
+        $this->load->helper('time');
+        if(!$this->input->post('editid')){
+           redirect('admin/users');
+        }
+        $this->load->model('model_users');
+        $user = $this->model_users->find($this->input->post('editid'));
+        if(!$user){
+            redirect('admin/users');
+        }
+        //update
+        if($this->input->post('weight')){
+            $arrayinsert = $this->input->post();
+            unset($arrayinsert['editid']);
+            if($this->input->post('access') == 1 or $this->input->post('access')== 3 ){
+                if($this->input->post('timedispatch') == 0 or $this->input->post('timearrival') == 0 or $this->input->post('timefinish') == 0){
+                    $this->blade->data('message','لطفا تاریخ صحیح وارد کنید .');
+                }else{
+                    $timedispatch = register_helper($this->input->post('timedispatch'));
+                    $timearrival = register_helper($this->input->post('timearrival'));
+                    $timefinish = register_helper($this->input->post('timefinish'));
+
+                    $arrayinsert['timedispatch'] = $timedispatch;
+                    $arrayinsert['timearrival'] = $timearrival;
+                    $arrayinsert['timefinish'] = $timefinish;
+                    $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
+                }
+            }else{
+                $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
+            }
+            if($update){
+                $this->blade->data('message','انجام شد');
+            }else{
+                $this->blade->data('message','تغییری ثبت نشد');
+            }
+        }
+        //
+        $user = $this->model_users->find($this->input->post('editid'));
+        $this->blade->data('user',$user);
+        $this->blade->display('admin.edit');
+    }
 }
