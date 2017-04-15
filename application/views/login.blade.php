@@ -125,8 +125,8 @@
 				</div>
 			@endif
 			<h2 class="fs-title">همین حالا وارد شوید</h2>
-			<input type="text" name="username" placeholder="کد ملی" />
-			<input type="password" name="pass" placeholder="رمزعبور" />
+			<input type="text" name="username" placeholder="کد ملی"  autocomplete="off"/>
+			<input type="password" name="pass" placeholder="رمزعبور" autocomplete="off"/>
 			<input type="submit" class="submit action-button" value="ورود" />
 		</fieldset>
 

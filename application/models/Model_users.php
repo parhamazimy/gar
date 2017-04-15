@@ -18,8 +18,9 @@ class model_users extends CI_Model
         $this->db->where('id',$id);
         return $this->db->get($this->table)->row();
     }
-    public function update($array)
+    public function update($array,$where)
     {
+        $this->db->where('id',$where);
         $this->db->update($this->table, $array);
         return $this->db->affected_rows();
     }

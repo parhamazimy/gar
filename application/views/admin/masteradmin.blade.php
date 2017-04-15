@@ -89,7 +89,7 @@
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-plus"></i>ثبت کاربر جدید</a></li>
+                                <li><a href="{{base_url('admin/reguster')}}" class="b%0=5"><i class="fa fa-plus"></i>ثبت کاربر جدید</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
                             </ul>
@@ -445,7 +445,7 @@
                                 <!-- /End message loop -->
                                 <!-- Message loop -->
                                 <div class="direct-chat-msg">
-                                    <img src="{{$root}}public/img/other/admin.jpg" alt="بارگذاری نشد" data-lity>
+                                    <img src="{{$root}}public/img/users/{{$img}}" alt="بارگذاری نشد" data-lity>
                                     <div class="chat-info clearfix"><span>مدیر</span></div>
 
                                     <div class="direct-chat-text">
@@ -547,13 +547,13 @@
             <div class="well-sm administrator">
                 <div class="clearfix">
                     <div class="admin-pic col-xs-5">
-                        <img class="img-rounded" src="{{$root}}public/img/other/admin.jpg" alt="بارگذاری نشد" data-lity>
+                        <img class="img-rounded" src="{{$root}}public/img/users/{{$img}}" alt="بارگذاری نشد" data-lity>
                     </div>
-                    <div class="admin-name col-xs-7"> آلبرت اینشتین </div>
+                    <div class="admin-name col-xs-7"> {{$name.' '.$family}} </div>
                 </div>
                 <div class="clearfix">
                     <div class="col-xs-12 text-center">
-                        <p>کد پرسنلی : <strong>1231231354654564</strong></p>
+                        <p>کد پرسنلی : <strong>{{$id}}</strong></p>
                     </div>
                 </div>
                 <span id="admin_close" class="fa fa-times fa-2x"></span>
@@ -582,7 +582,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                        <a href="{{base_url()}}" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-plus-circle t#ff561c"></i>ثبت کاربر جدید
                         </a>
                     </li>
