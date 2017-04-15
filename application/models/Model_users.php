@@ -24,6 +24,23 @@ class model_users extends CI_Model
         $this->db->update($this->table, $array);
         return $this->db->affected_rows();
     }
+    public function insert($array)
+
+    {
+
+         $this->db->insert($this->table,$array);
+         return $this->db->insert_id();
+
+    }
+    function delete($id)
+
+    {
+
+        $this->db->where('id', $id);
+
+        return $this->db->delete($this->table);
+
+    }
 
 
 }

@@ -98,4 +98,68 @@ class admin extends CI_Controller {
 
 
     }
+    //////////////////////////////////////
+    function register()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_users');
+        if($this->input->post('nationalcode') and $this->input->post('fieldofStudy')){
+
+            $arrayinsert = $this->input->post();
+            if($this->input->post('access') == 1 or $this->input->post('access')== 3 ){
+                if($this->input->post('timedispatch') == 0 or $this->input->post('timearrival') == 0 or $this->input->post('timefinish') == 0){
+                    $this->blade->data('message','لطفا تاریخ صحیح وارد کنید .');
+                }else{
+                    $timedispatch = register_helper($this->input->post('timedispatch'));
+                    $timearrival = register_helper($this->input->post('timearrival'));
+                    $timefinish = register_helper($this->input->post('timefinish'));
+
+                    $arrayinsert['timedispatch'] = $timedispatch;
+                    $arrayinsert['timearrival'] = $timearrival;
+                    $arrayinsert['timefinish'] = $timefinish;
+                    $insertid = $this->model_users->insert($arrayinsert);
+                }
+            }else{
+                $insertid = $this->model_users->insert($arrayinsert);
+                echo $insertid;
+            }
+            //upload
+            if(isset($_FILES['userfile']) and !empty($insertid)){
+                $config['upload_path']          = './public/img/users/';
+                $config['allowed_types']        = 'jpg|png|jpeg';
+                $config['max_size']             = 1024;
+                $config['max_width']            = 1920;
+                $config['max_height']           = 1080;
+                $config['file_name']           =   $this->session->userdata('id');
+                $config['allowed_types']        = 'jpg|png|jpeg';
+                $config['max_size']             = 1024;
+                $config['max_width']            = 1920;
+                $config['max_height']           = 1080;
+                $config['file_name']           = $insertid;
+                $config['overwrite']           = true;
+                $this->load->library('upload', $config);
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                    $error =  $this->upload->display_errors();
+                    $this->model_users->delete($insertid);
+                    $this->blade->data('message',$error);
+                }else{
+                    $path = $this->upload->data('file_name');
+                    $upload = $this->model_users->update(['pic'=>$path],$insertid);
+                    if($upload){
+                        $this->blade->data('message','ثبت نام با موفقیت انجام شد .');
+                    }else{
+                        // $this->blade->data('message','خطادر پایگاه داده');
+                        $this->blade->data('message','ثبت نام با موفقیت انجام شد .!!');
+                    }
+                }
+            }else{
+                $this->blade->data('message','خطا .!!');
+            }
+            //
+
+        }
+        $this->blade->data('title','داشبورد پنل مدیریت');
+        $this->blade->display('admin.register');
+    }
 }

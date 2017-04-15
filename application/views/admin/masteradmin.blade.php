@@ -19,6 +19,7 @@
 
     <!-- Header scripts -->
     <script type="text/javascript" src="{{$root}}public/js/modernizr-custom.js"></script>
+    @yield('css')
 </head>
 
 <body class="container-fluid">
@@ -89,7 +90,7 @@
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
-                                <li><a href="{{base_url('admin/reguster')}}" class="b%0=5"><i class="fa fa-plus"></i>ثبت کاربر جدید</a></li>
+                                <li><a href="{{base_url('admin/register')}}" class="b%0=5"><i class="fa fa-plus"></i>ثبت کاربر جدید</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
                             </ul>
@@ -582,7 +583,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{base_url()}}" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                        <a href="{{base_url('admin/register')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-plus-circle t#ff561c"></i>ثبت کاربر جدید
                         </a>
                     </li>
@@ -699,6 +700,7 @@
 
     });
 </script>
+@yield('js')
 </body>
 
 </html>
