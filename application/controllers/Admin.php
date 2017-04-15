@@ -162,4 +162,25 @@ class admin extends CI_Controller {
         $this->blade->data('title','داشبورد پنل مدیریت');
         $this->blade->display('admin.register');
     }
+    //////////////////////////
+    //
+    //
+    //////////////////////////
+    function users(){
+        $this->load->model('model_users');
+        if($this->input->post('deleteid')){
+            $result = $this->model_users->delete($this->input->post('deleteid'));
+            if($result){
+                $this->blade->data('message','حذف شد');
+            }else{
+                $this->blade->data('message','خطا');
+            }
+        }
+        $this->load->helper('time');
+        $this->blade->data('title','مدیریت کاربران');
+
+        $users = $this->model_users->all();
+        $this->blade->data('users',$users);
+        $this->blade->display('admin.users');
+    }
 }

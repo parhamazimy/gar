@@ -41,6 +41,10 @@ class model_users extends CI_Model
         return $this->db->delete($this->table);
 
     }
+    function all(){
+        $this->db->where('access !=',0);
+        return $this->db->get($this->table)->result();
+    }
 
 
 }
