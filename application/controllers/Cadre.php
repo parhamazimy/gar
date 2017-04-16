@@ -23,7 +23,125 @@ class cadre extends CI_Controller
     function index()
     {
         $this->blade->data('title','پروفایل');
+        $this->load->model('model_users');
+
+        if($this->input->post('blood') and $this->input->post('tell')){
+            $ress = $this->model_users->update($this->input->post(),$this->session->userdata('id'));
+            if($ress){
+                $this->blade->data('message','تغییرات ثبت شد .');
+            }else{
+                $this->blade->data('message','تغییر انجام نشد .');
+            }
+        }
+        //pas
+        if($this->input->post('new') != null and $this->input->post('old')){
+            $this->form_validation->set_rules('new','new','required');
+            $this->form_validation->set_rules('old','old','required');
+            $this->form_validation->set_rules('rep','rep','required');
+            if($this->form_validation->run()){
+                if($this->input->post('new') != $this->input->post('rep')){
+                    $this->blade->data('message','رمز عبور جدید با تکرار رمز عبور تطابق ندارد.');
+                }
+                else{
+                    $all = $this->model_users->find($this->session->userdata('id'));
+                    $oldpass =  $all->password;
+                    if($oldpass != $this->input->post('old')){
+                        $this->blade->data('message','رمز خود را اشتباه وارد کرده اید.');
+                    }else{
+                        $newpass = $this->input->post('new');
+                        $change = $this->model_users->update(['password'=>$newpass],$this->session->userdata('id'));
+                        if($change){
+                            $this->blade->data('message','رمز تغییر کرد.');
+                        }else{
+                            $this->blade->data('message','رمز تغییر نکرد خطا');
+                        }
+
+                    }
+                }
+            }
+        }
+        //upload
+        if(isset($_FILES['userfile'])){
+            $config['upload_path']          = './public/img/users/';
+            $config['allowed_types']        = 'jpg|png|jpeg';
+            $config['max_size']             = 1024;
+            $config['max_width']            = 1920;
+            $config['max_height']           = 1080;
+            $config['file_name']           =   $this->session->userdata('id');
+            $config['allowed_types']        = 'jpg|png|jpeg';
+            $config['max_size']             = 1024;
+            $config['max_width']            = 1920;
+            $config['max_height']           = 1080;
+            $config['file_name']           = $this->session->userdata('id').$this->session->userdata('username');
+            $config['overwrite']           = true;
+            $this->load->library('upload', $config);
+            if ( ! $this->upload->do_upload('userfile'))
+            {
+                $error =  $this->upload->display_errors();
+                $this->blade->data('message',$error);
+            }else{
+                $path = $this->upload->data('file_name');
+                $upload = $this->model_users->update(['pic'=>$path],$this->session->userdata('id'));
+                if($upload){
+                    $this->blade->data('message','آپلود با موفقیت انجام شد .');
+                }else{
+//                     $this->blade->data('message','خطادر پایگاه داده');
+                    $this->blade->data('message','آپلود با موفقیت انجام شد .!!');
+
+                }
+                $this->session->set_userdata('pic',$path);
+                $this->blade->data('img',$path);
+            };
+        }
+        //
+        $user = $this->model_users->find($this->session->userdata('id'));
+        $this->blade->data('user',$user);
+
         $this->blade->display('cadre.profile');
+    }
+
+
+    /////////////////////////
+    //
+    ////////////////////////
+
+
+    function vacations()
+    {
+        $this->blade->data('title','ثبت مرخصی');
+        $this->load->model('model_users');
+        //post
+        if($this->input->post('htimes')){
+            $this->load->model('model_vacations');
+            $this->load->helper('time');
+            //////////////
+            $htimef = explode(':',$this->input->post('htimef'));
+            $timef = explode('/',$this->input->post('timef'));
+            $timef = make_time($htimef[0],$htimef[1],0,$timef[1],$timef[2],$timef[0]);
+            /////////////////////////
+            $htimes = explode(':',$this->input->post('htimes'));
+            $times = explode('/',$this->input->post('times'));
+            $times = make_time($htimes[0],$htimes[1],0,$times[1],$times[2],$times[0]);
+            ///
+            $arraypost = $this->input->post();
+            unset($arraypost['htimes']);
+            unset($arraypost['htimef']);
+            $arraypost['times'] = $times ;
+            $arraypost['timef'] = $timef ;
+            $ress = $this->model_vacations->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_users->findwhere('access ',$access);
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.vacations');
     }
 
 }

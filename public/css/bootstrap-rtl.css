@@ -132,6 +132,7 @@ button {
 button,
 select {
   text-transform: none;
+  padding: 0px 15px 8px 0px !important;
 }
 button,
 html input[type="button"],

@@ -86,9 +86,9 @@
                                 <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-user-times"></i>افراد غیر حاضر در مجموعه</a></li>
-                                <li><a href="{{base_url('admin/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی ها</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-bed"></i>ثبت مرخصی</a></li>
+                                <li><a href="{{base_url('cadre/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
+                                <li><a href="" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی ها</a></li>
+                                <li><a href="{{base_url('cadre/vacations')}}.html" class="b%0=5"><i class="fa fa-bed"></i>ثبت مرخصی</a></li>
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
@@ -583,7 +583,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                        <a href="{{base_url('cadre/vacations')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-bed t#46c35f"></i>ثبت مرخصی
                         </a>
                     </li>
