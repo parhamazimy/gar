@@ -174,13 +174,29 @@
                             </div>
                             <label class="col-sm-2  control-label">وضعیت تاهل</label>
                             <div class="col-sm-4">
-                                <input name="married" type="text" class="form-control"  placeholder="وضعیت تاهل" value="{{$user->married}}"  required>
+                                <select name="married" class="form-control">
+                                    @if($user->married == 1)
+                                        <option value="1">متاهل</option>
+                                    @else
+                                        <option value="0">مجرد</option>
+                                    @endif
+                                    <option value="0">مجرد</option>
+                                    <option value="1">متاهل</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label class="col-sm-2  control-label" >وضعیت سلامتی</label>
                             <div class="col-sm-4">
-                                <input type="text" name="health" class="form-control"  placeholder="وضعیت سلامتی" value="{{$user->health}}"  required>
+                                <select name="health" class="form-control">
+                                    @if($user->health == 1)
+                                        <option value="1">سالم</option>
+                                    @else
+                                        <option value="0">معاف از رزم</option>
+                                    @endif
+                                    <option value="1">سالم</option>
+                                    <option value="0">معاف از رزم</option>
+                                </select>
                             </div>
 
                         </div>

@@ -229,4 +229,11 @@ class admin extends CI_Controller {
         $this->blade->data('user',$user);
         $this->blade->display('admin.edit');
     }
+    function test(){
+        $this->load->library('Excel_XML');
+        $mydata[0] = ['ss','ff'];
+        $mydata[1] = ['zz','gg'];
+        $this->excel_xml->addWorksheet('Names', $mydata);
+        $this->excel_xml->sendWorkbook('test.xls');
+    }
 }

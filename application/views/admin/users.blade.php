@@ -12,8 +12,8 @@
     </div>
     <div class="panel" id="basic">
         <div class="panel-heading b#ffe7ff">
-            <i class="fa fa-hashtag sort-hand"></i>
-            جدول ساده
+            <i class="fa fa-users sort-hand"></i>
+            کاربران
             <div class="pan-btn expand min"></div>
         </div>
         <div class="panel-body">
@@ -23,6 +23,11 @@
                     <strong>توجه!</strong>{!! $message !!}
                 </div>
             @endif
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <a target="_blank" class="btn btn-primary" href="{{$root}}backup.html"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
+                </div>
+            </div>
 
             <table id="grid-basic" class="table table-condensed table-hover table-striped">
                 <thead>
