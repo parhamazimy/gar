@@ -41,16 +41,16 @@ class login extends CI_Controller
                         redirect('admin');
                     }
                     elseif ($users->access == 1){
-                        redirect('campsoldier');
+                        redirect('soldier');
                     }
                     elseif ($users->access == 2){
-                        redirect('campcarde');
+                        redirect('cadre');
                     }
                     elseif ($users->access == 3){
-                        redirect('personalsoldier');
+                        redirect('soldier');
                     }
                     elseif ($users->access == 4){
-                        redirect('personalcarde');
+                        redirect('cadre');
                     }
                     else{
                         die('error accsess !');

@@ -85,12 +85,18 @@
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>افراد عیر حاضر در مجموعه</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-user-times"></i>افراد غیر حاضر در مجموعه</a></li>
                                 <li><a href="{{base_url('admin/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی ها</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-bed"></i>ثبت مرخصی</a></li>
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
-                                <li><a href="{{base_url('admin/register')}}.html" class="b%0=5"><i class="fa fa-plus"></i>ثبت کاربر جدید</a></li>
+
+                                <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
+                                <li><a href="{{base_url('admin/users')}}.html" class="b%0=5"><i class="fa fa-eye"></i>لیست ماموریت ها</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-clock-o"></i>ثبت تاخیر</a></li>
+                                <li><a href="#" class="b%0=5"><i class="fa fa-exclamation-triangle"></i>ثبت تنبیهی</a></li>
                                 <li><a href="{{$root}}" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
                             </ul>
 
@@ -567,19 +573,43 @@
                     <!-- Dashboard -->
                     <li>
                         <a href="index.html">
-                            <i class="fa fa-users t#ff561c"></i> ویرایش پروفایل
+                            <i class="fa fa-user-secret t#ff561c"></i> ویرایش پروفایل
                         </a>
                     </li>
-
 
                     <li>
                         <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-user-times t#46c35f"></i>افراد غیر حاضر
+                            <i class="fa fa-user-times t#777"></i>افراد غیر حاضر
                         </a>
                     </li>
                     <li>
-                        <a href="{{base_url('admin/register')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-plus-circle t#ff561c"></i>ثبت کاربر جدید
+                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-bed t#46c35f"></i>ثبت مرخصی
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-calendar-times-o t#ff561c"></i>مرخصی ها
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-plane " style="color: rgba(255,155,45,0.75)"></i>ثبت ماموریت
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-eye t#46c35f"></i>مشاهده ماموریت ها
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-clock-o " style="color: red"></i>ثبت تاخیر
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-exclamation-triangle " style="color: orangered"></i>ثبت تنبیهی
                         </a>
                     </li>
                     <li>
