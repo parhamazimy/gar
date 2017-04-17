@@ -89,10 +89,12 @@
                                 <li><a href="{{base_url('cadre/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
                                 <li><a href="{{base_url('cadre/vacations_list')}}.html" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی ها</a></li>
                                 <li><a href="{{base_url('cadre/vacations')}}.html" class="b%0=5"><i class="fa fa-bed"></i>ثبت مرخصی</a></li>
+                                <li><a href="{{base_url('cadre/overtime')}}.html" class="b%0=5"><i class="fa fa-hourglass-half"></i>ثبت اضافه خدمت</a></li>
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
 
+                                <li><a href="{{base_url('cadre/overtime_list')}}.html" class="b%0=5"><i class="fa fa-hourglass-1"></i>لیست اضافه خدمت</a></li>
                                 <li><a href="{{base_url('cadre/mission')}}.html" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
                                 <li><a href="{{base_url('cadre/mission_list')}}.html" class="b%0=5"><i class="fa fa-eye"></i>لیست ماموریت ها</a></li>
                                 <li><a href="{{base_url('cadre/delay')}}.html" class="b%0=5"><i class="fa fa-clock-o"></i>ثبت تاخیر</a></li>
@@ -602,6 +604,8 @@
                             <i class="fa fa-eye t#46c35f"></i>مشاهده ماموریت ها
                         </a>
                     </li>
+                    <li><a href="{{base_url('cadre/overtime')}}.html" class="b%0=5"><i style="color: red" class="fa fa-hourglass-half"></i>ثبت اضافه خدمت</a></li>
+                    <li><a href="{{base_url('cadre/overtime_list')}}.html" class="b%0=5"><i style="color: darkgoldenrod" class="fa fa fa-hourglass-1"></i>لیست اضافه خدمت</a></li>
                     <li>
                         <a href="{{base_url('cadre/delay')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-clock-o " style="color: red"></i>ثبت تاخیر

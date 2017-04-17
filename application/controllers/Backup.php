@@ -148,6 +148,25 @@ class backup extends CI_Controller
         }
 
     }
+    function overtime()
+    {
+        if( $this->session->userdata('access') == 2 or $this->session->userdata('access') == 4){//cadre
+            $access = $this->session->userdata('access') - 1 ;
+            $this->load->model('model_overtime');
+            $vacations = $this->model_overtime->all($access);
+            $i= 0 ;
+            $mydata[$i] = ['id','userid','times','description'];
+            foreach ($vacations as $data){
+                $i ++ ;
+                $mydata[$i] = [$data->overtimeid,$data->userid,$data->time,$data->description];
+
+            }
+            $this->excel_xml->addWorksheet('Names', $mydata);
+            $this->excel_xml->sendWorkbook('overtime.xls');
+        }else{
+            die();
+        }
+    }
 
 
 

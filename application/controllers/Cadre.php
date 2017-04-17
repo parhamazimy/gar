@@ -302,6 +302,53 @@ class cadre extends CI_Controller
         $this->blade->display('cadre.absent');
     }
 
+    //////////////////////////
+    //
+    ////////////////////////
+    function overtime()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_overtime');
+        if($this->input->post('time')){
+            $ress = $this->model_overtime->insert($this->input->post());
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        $this->load->model('model_users');
+        $this->blade->data('title','ثبت اضافه خدمت');
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_users->findwhere('access ',$access);
+        $this->blade->data('users',$users);
+
+
+
+        $this->blade->display('cadre.overtime');
+    }
+    /////////////////////
+    ///
+    /////////////////////
+    function overtime_list()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_overtime');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_overtime->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_overtime->all($this->session->userdata('access')- 1);
+        $this->blade->data('title','لیست اضافه خدمت  ها');
+        $this->blade->data('vacations',$vacations);
+        $this->blade->display('cadre.overtime_list');
+    }
+
 
 
 }
