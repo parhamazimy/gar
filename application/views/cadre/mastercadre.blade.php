@@ -94,9 +94,9 @@
                                 <li><h4>پنل مدیریت پادگان</h4></li>
 
                                 <li><a href="{{base_url('cadre/mission')}}.html" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
-                                <li><a href="{{base_url('admin/users')}}.html" class="b%0=5"><i class="fa fa-eye"></i>لیست ماموریت ها</a></li>
+                                <li><a href="{{base_url('cadre/mission_list')}}.html" class="b%0=5"><i class="fa fa-eye"></i>لیست ماموریت ها</a></li>
                                 <li><a href="{{base_url('cadre/delay')}}.html" class="b%0=5"><i class="fa fa-clock-o"></i>ثبت تاخیر</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-exclamation-triangle"></i>ثبت تنبیهی</a></li>
+                                <li><a href="{{base_url('cadre/delay_list')}}.html" class="b%0=5"><i class="fa fa-exclamation-triangle"></i> لیست تاخیر ها</a></li>
                                 <li><a href="{{$root}}" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
                             </ul>
 
@@ -598,7 +598,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                        <a href="{{base_url('cadre/mission_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-eye t#46c35f"></i>مشاهده ماموریت ها
                         </a>
                     </li>
@@ -608,8 +608,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-exclamation-triangle " style="color: orangered"></i>ثبت تنبیهی
+                        <a href="{{base_url('cadre/delay_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-exclamation-triangle " style="color: orangered"></i>تاخیر ها
                         </a>
                     </li>
                     <li>

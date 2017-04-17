@@ -79,4 +79,52 @@ class backup extends CI_Controller
 
     }
 
+    function mission()
+    {
+
+
+        if( $this->session->userdata('access') == 2 or $this->session->userdata('access') == 4){//cadre
+            $access = $this->session->userdata('access') - 1 ;
+            $this->load->model('model_vacations');
+            $vacations = $this->model_vacations->mission($access);
+            $i= 0 ;
+            $mydata[$i] = ['id','userid','status','times','timef','description'];
+            foreach ($vacations as $data){
+                $i ++ ;
+                $mydata[$i] = [$data->id,$data->userid,$data->status,$data->times,$data->timef,$data->description];
+
+            }
+            $this->excel_xml->addWorksheet('Names', $mydata);
+            $this->excel_xml->sendWorkbook('vacations.xls');
+        }else{
+            die();
+        }
+
+    }
+
+
+    function delay()
+    {
+
+
+        if( $this->session->userdata('access') == 2 or $this->session->userdata('access') == 4){//cadre
+            $access = $this->session->userdata('access') - 1 ;
+            $this->load->model('model_vacations');
+            $vacations = $this->model_vacations->delay($access);
+            $i= 0 ;
+            $mydata[$i] = ['id','userid','status','times','timef','description'];
+            foreach ($vacations as $data){
+                $i ++ ;
+                $mydata[$i] = [$data->id,$data->userid,$data->status,$data->times,$data->timef,$data->description];
+
+            }
+            $this->excel_xml->addWorksheet('Names', $mydata);
+            $this->excel_xml->sendWorkbook('delay.xls');
+        }else{
+            die();
+        }
+
+    }
+
+
 }

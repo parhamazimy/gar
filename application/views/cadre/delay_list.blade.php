@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">مرخصی ها</h2>
+        <h2 class="page-title">تاخیر ها</h2>
         <ol class="breadcrumb">
-            <li><a href="{{base_url('admin/index')}}.html">پنل کادر</a></li>
-            <li><span>مرخصی ها</span></li>
+            <li><a href="{{base_url('cadre/index')}}.html">پنل کادر</a></li>
+            <li><span>تاخیر ها</span></li>
         </ol>
     </div>
     <div class="panel" id="basic">
         <div class="panel-heading b#ffe7ff">
-            <i class="fa fa-bed sort-hand"></i>
-            مرخصی ها
+            <i class="fa fa-clock-o sort-hand"></i>
+            تاخیر ها
             <div class="pan-btn expand min"></div>
         </div>
         <div class="panel-body">
@@ -25,7 +25,7 @@
             @endif
             <div class="row">
                 <div class="col-lg-3 text-center">
-                    <a target="_blank" class="btn btn-primary" href="{{base_url('backup/vacations')}}"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
+                    <a target="_blank" class="btn btn-primary" href="{{base_url('backup/delay')}}"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
                 </div>
             </div>
 
@@ -40,7 +40,6 @@
                     <th data-column-id="s6"  data-visible='false'>درجه</th>
                     <th data-column-id="s7">تاریخ شروع</th>
                     <th data-column-id="s8">تاریخ پایان </th>
-                    <th data-column-id="s9">نوع مرخصی </th>
                     <th data-column-id="s10"  data-visible='false'>توضیحات</th>
                     <th data-column-id="expenseId" data-formatter="expenseReportEdit">عملیات</th>
                 </tr>
@@ -61,19 +60,6 @@
                         <td>
                             {{mds_date('Y/m/d h:i',$vacation->timef)}}
                         </td>
-                        <td>
-                            @if($vacation->status == 0)
-                               ساعتی
-                            @elseif($vacation->status == 1)
-                                تشویقی
-                            @elseif($vacation->status == 2)
-                                استحقاقی
-                            @elseif($vacation->status == 3)
-                                استعلاجی
-                            @elseif($vacation->status == 4)
-                                استراحتی
-                            @endif
-                        </td>
                         <td>{{$vacation->description}}</td>
                         <td>{{$vacation->vacationsid}}</td>
 
@@ -89,7 +75,7 @@
         </div>
     </div>
     <!-- /End Basic table -->
-    {!! form_open('cadre/vacations_list','style="display: none" id="delete" ') !!}
+    {!! form_open('cadre/delay_list','style="display: none" id="delete" ') !!}
     {!! form_close() !!}
     {!! form_open('admin/edit','style="display: none" id="edit" ') !!}
     {!! form_close() !!}

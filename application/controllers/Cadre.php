@@ -244,6 +244,50 @@ class cadre extends CI_Controller
         $this->blade->data('title','لیست مرخصی ها');
         $this->blade->display('cadre.vacations_list');
     }
+    //////////////////////////////////
+    ///
+    ////////////////////////////////
+
+    function mission_list()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_vacations');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_vacations->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_vacations->mission($this->session->userdata('access')- 1);
+        $this->blade->data('title','لیست ماموریت ها');
+        $this->blade->data('vacations',$vacations);
+        $this->blade->display('cadre.mission_list');
+    }
+    //////////////////////////
+    //
+    ///////////////////////////
+    function delay_list()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_vacations');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_vacations->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_vacations->delay($this->session->userdata('access')- 1);
+        $this->blade->data('title','لیست تاخیر ها');
+        $this->blade->data('vacations',$vacations);
+        $this->blade->display('cadre.delay_list');
+    }
+
 
 
 }
