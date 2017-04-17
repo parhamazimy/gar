@@ -3,11 +3,22 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class backup extends CI_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->library('Excel_XML');
+        $this->load->helper('url');
+
+        if(!$this->session->has_userdata('id') ){
+            redirect('login');
+        }
+    }
+
     function index()
     {
-        $this->load->library('Excel_XML');
+
         $this->load->model('model_users');
-        $this->load->helper('url');
+
 
         if(!$this->session->has_userdata('id') ){
             redirect('login');
@@ -42,6 +53,29 @@ class backup extends CI_Controller
         $this->excel_xml->addWorksheet('Names', $mydata);
         $this->excel_xml->sendWorkbook('users.xls');
 
+
+    }
+
+    function vacations()
+    {
+
+
+        if( $this->session->userdata('access') == 2 or $this->session->userdata('access') == 4){//cadre
+            $access = $this->session->userdata('access') - 1 ;
+            $this->load->model('model_vacations');
+            $vacations = $this->model_vacations->vacations($access);
+            $i= 0 ;
+            $mydata[$i] = ['id','userid','status','times','timef','description'];
+            foreach ($vacations as $data){
+                $i ++ ;
+                $mydata[$i] = [$data->id,$data->userid,$data->status,$data->times,$data->timef,$data->description];
+
+            }
+            $this->excel_xml->addWorksheet('Names', $mydata);
+            $this->excel_xml->sendWorkbook('vacations.xls');
+        }else{
+            die();
+        }
 
     }
 

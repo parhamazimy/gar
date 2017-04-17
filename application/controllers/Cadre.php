@@ -226,6 +226,24 @@ class cadre extends CI_Controller
         $this->blade->display('cadre.delay');
 
     }
+    function vacations_list()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_vacations');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_vacations->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_vacations->vacations($this->session->userdata('access')- 1);
+        $this->blade->data('vacations',$vacations);
+        $this->blade->data('title','لیست مرخصی ها');
+        $this->blade->display('cadre.vacations_list');
+    }
 
 
 }
