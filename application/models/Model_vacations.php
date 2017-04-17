@@ -50,6 +50,16 @@ class model_vacations extends CI_Model
         return  $this->db->get($this->table)->result();
 
     }
+    function absent($access)
+    {
+        $this->db->select(' * ,vacations.id AS vacationsid');
+        $this->db->where('status !=', 5);
+        $this->db->where('times <',time());
+        $this->db->where('timef >',time());
+        $this->db->where('users.access ', $access);
+        $this->db->join('users', 'users.id = vacations.userid');
+        return  $this->db->get($this->table)->result();
+    }
 
     function delete($id)
 

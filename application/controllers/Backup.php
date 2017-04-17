@@ -126,5 +126,30 @@ class backup extends CI_Controller
 
     }
 
+    function absent()
+    {
+
+
+        if( $this->session->userdata('access') == 2 or $this->session->userdata('access') == 4){//cadre
+            $access = $this->session->userdata('access') - 1 ;
+            $this->load->model('model_vacations');
+            $vacations = $this->model_vacations->absent($access);
+            $i= 0 ;
+            $mydata[$i] = ['id','userid','status','times','timef','status','description'];
+            foreach ($vacations as $data){
+                $i ++ ;
+                $mydata[$i] = [$data->id,$data->userid,$data->status,$data->times,$data->timef,$data->status,$data->description];
+
+            }
+            $this->excel_xml->addWorksheet('Names', $mydata);
+            $this->excel_xml->sendWorkbook('absent.xls');
+        }else{
+            die();
+        }
+
+    }
+
+
+
 
 }

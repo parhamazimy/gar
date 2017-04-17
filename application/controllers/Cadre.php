@@ -287,6 +287,20 @@ class cadre extends CI_Controller
         $this->blade->data('vacations',$vacations);
         $this->blade->display('cadre.delay_list');
     }
+    ////////////////////////////
+    //
+    /////////////////////////////
+
+    function absent()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_vacations');
+
+        $vacations = $this->model_vacations->absent($this->session->userdata('access')- 1);
+        $this->blade->data('title','لیست تاخیر ها');
+        $this->blade->data('vacations',$vacations);
+        $this->blade->display('cadre.absent');
+    }
 
 
 
