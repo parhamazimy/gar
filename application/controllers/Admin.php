@@ -205,6 +205,7 @@ class admin extends CI_Controller {
             if($this->input->post('access') == 1 or $this->input->post('access')== 3 ){
                 if($this->input->post('timedispatch') == 0 or $this->input->post('timearrival') == 0 or $this->input->post('timefinish') == 0){
                     $this->blade->data('message','لطفا تاریخ صحیح وارد کنید .');
+                    goto a ;
                 }else{
                     $timedispatch = register_helper($this->input->post('timedispatch'));
                     $timearrival = register_helper($this->input->post('timearrival'));
@@ -223,6 +224,7 @@ class admin extends CI_Controller {
             }else{
                 $this->blade->data('message','تغییری ثبت نشد');
             }
+            a :
         }
         //
         $user = $this->model_users->find($this->input->post('editid'));

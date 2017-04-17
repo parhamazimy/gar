@@ -348,6 +348,68 @@ class cadre extends CI_Controller
         $this->blade->data('vacations',$vacations);
         $this->blade->display('cadre.overtime_list');
     }
+    ///////////////////////////////
+    //
+    /////////////////////////////
+    function users()
+    {
+        $this->load->model('model_users');
+        if($this->input->post('deleteid')){
+            $result = $this->model_users->delete($this->input->post('deleteid'));
+            if($result){
+                $this->blade->data('message','حذف شد');
+            }else{
+                $this->blade->data('message','خطا');
+            }
+        }
+        $this->load->helper('time');
+        $this->blade->data('title','مدیریت کاربران');
+
+        $users = $this->model_users->access($this->session->userdata('access')-1);
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.users');
+    }
+    /////////////////////////////////
+    //
+    /////////////////////////////////
+    function edit()
+    {
+        $this->blade->data('title','ویرایش کاربر');
+        $this->load->helper('time');
+        if(!$this->input->post('editid')){
+            redirect('cadre/users');
+        }
+        $this->load->model('model_users');
+        $user = $this->model_users->find($this->input->post('editid'));
+        if(!$user){
+            redirect('cadre/users');
+        }
+        //update
+        if($this->input->post('weight')){
+            $arrayinsert = $this->input->post();
+            unset($arrayinsert['editid']);
+            $timedispatch = register_helper($this->input->post('timedispatch'));
+            $timearrival = register_helper($this->input->post('timearrival'));
+            $timefinish = register_helper($this->input->post('timefinish'));
+            $timelastfinish = register_helper($this->input->post('timelastfinish'));
+
+            $arrayinsert['timedispatch'] = $timedispatch;
+            $arrayinsert['timearrival'] = $timearrival;
+            $arrayinsert['timefinish'] = $timefinish;
+            $arrayinsert['timelastfinish'] = $timelastfinish;
+            $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
+
+            if($update){
+                $this->blade->data('message','انجام شد');
+            }else{
+                $this->blade->data('message','تغییری ثبت نشد');
+            }
+        }
+        //
+        $user = $this->model_users->find($this->input->post('editid'));
+        $this->blade->data('user',$user);
+        $this->blade->display('cadre.edit');
+    }
 
 
 

@@ -45,6 +45,10 @@ class model_users extends CI_Model
         $this->db->where('access !=',0);
         return $this->db->get($this->table)->result();
     }
+    function access($access){
+        $this->db->where('access',$access);
+        return $this->db->get($this->table)->result();
+    }
 
 
     function findwhere($where,$val){

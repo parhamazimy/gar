@@ -31,7 +31,7 @@
                                 <strong>توجه!</strong>{!! $message !!}
                             </div>
                         @endif
-                        {!! form_open_multipart('admin/edit','class="form-horizontal"') !!}
+                        {!! form_open_multipart('cadre/edit','class="form-horizontal"') !!}
                         <div class="form-group ">
 
                             <label class="col-sm-2  control-label"> کد ملی</label>
@@ -223,24 +223,12 @@
                         </div>
 
                         <div class="form-group ">
-                            <label class="col-sm-2  control-label" >پست</label>
-                            <div class="col-sm-4">
-                                <select id="change" name="access" class="form-control">
-                                    @if($user->access == 1)
-                                        <option value="1">وظیفه گردان قرار گاه</option>
-                                    @elseif($user->access == 2)
-                                        <option selected value="2"> کادر گردان قرار گاه</option>
-                                    @elseif($user->access == 3)
-                                        <option value="3">وظیفه نیروی انسانی</option>
-                                    @elseif($user->access == 4)
-                                        <option value="4">کادر نیروی انسانی</option>
-                                    @endif
-                                    <option value="1">وظیفه گردان قرار گاه</option>
-                                    <option selected value="2"> کادر گردان قرار گاه</option>
-                                    <option value="3">وظیفه نیروی انسانی</option>
-                                    <option value="4">کادر نیروی انسانی</option>
-                                </select>
+                            <label class="col-sm-3  control-label">میزان کسری خدمت تأییدشده  </label>
+                            <div class="col-sm-3">
+                                <input  value="{{$user->deficit}}"  placeholder="بر حسب روز" type="number"  class="form-control" name="deficit">
+                                <input  value="{{$user->id}}"  placeholder="بر حسب روز" type="hidden"  class="form-control" name="editid">
                             </div>
+
                             <label class="col-sm-2  control-label" > کد پستی</label>
                             <div class="col-sm-4">
                                 <input name="postalcode" value="{{$user->postalcode}}" type="number" class="form-control"  placeholder="  کد پستی"   required>
@@ -253,17 +241,17 @@
                                 <label class="col-sm-2  control-label">تاریخ اعزام به خدمت </label>
                                 <div class="col-sm-4">
                                     @if($user->timedispatch == 0)
-                                    <input readonly placeholder="تاریخ " value="0" type="text" id="pcal1" class="pdate full-width has-padding has-border" name="timedispatch">
+                                        <input readonly placeholder="تاریخ " value="0" type="text" id="pcal1" class="pdate full-width has-padding has-border" name="timedispatch">
                                     @else
-                                    <input readonly placeholder="تاریخ " value="{{mds_date('y/m/d',$user->timedispatch)}}" type="text" id="pcal1" class="pdate full-width has-padding has-border" name="timedispatch">
+                                        <input readonly placeholder="تاریخ " value="{{mds_date('y/m/d',$user->timedispatch)}}" type="text" id="pcal1" class="pdate full-width has-padding has-border" name="timedispatch">
                                     @endif
                                 </div>
                                 <label class="col-sm-2  control-label">تاریخ ورود به مجموعه </label>
                                 <div class="col-sm-4">
                                     @if($user->timearrival == 0)
-                                    <input value="0" readonly placeholder="تاریخ " type="text" id="pcal2" class="pdate full-width has-padding has-border" name="timearrival">
+                                        <input value="0" readonly placeholder="تاریخ " type="text" id="pcal2" class="pdate full-width has-padding has-border" name="timearrival">
                                     @else
-                                    <input readonly placeholder="تاریخ " value="{{mds_date('y/m/d',$user->timearrival)}}" type="text" id="pcal2" class="pdate full-width has-padding has-border" name="timearrival">
+                                        <input readonly placeholder="تاریخ " value="{{mds_date('y/m/d',$user->timearrival)}}" type="text" id="pcal2" class="pdate full-width has-padding has-border" name="timearrival">
                                     @endif
                                 </div>
                             </div>
@@ -271,16 +259,20 @@
                                 <label class="col-sm-2  control-label">تاریخ خاتمه خدمت قانونی</label>
                                 <div class="col-sm-4">
                                     @if($user->timefinish == 0)
-                                    <input value="0" readonly placeholder="تاریخ " type="text" id="pcal3" class="pdate full-width has-padding has-border" name="timefinish">
+                                        <input value="0" readonly placeholder="تاریخ " type="text" id="pcal3" class="pdate full-width has-padding has-border" name="timefinish">
                                     @else
                                         <input value="{{mds_date('y/m/d',$user->timefinish)}}" readonly placeholder="تاریخ " type="text" id="pcal3" class="pdate full-width has-padding has-border" name="timefinish">
                                     @endif
                                 </div>
-                                <label class="col-sm-3  control-label">میزان کسری خدمت تأییدشده  </label>
-                                <div class="col-sm-3">
-                                    <input  value="{{$user->deficit}}"  placeholder="بر حسب روز" type="number"  class="form-control" name="deficit">
-                                    <input  value="{{$user->id}}"  placeholder="بر حسب روز" type="hidden"  class="form-control" name="editid">
+                                <label class="col-sm-2  control-label">تاریخ خروج از مجموعه</label>
+                                <div class="col-sm-4">
+                                    @if($user->timelastfinish == 0)
+                                        <input value="0" readonly placeholder="تاریخ " type="text" id="pcal4" class="pdate full-width has-padding has-border" name="timelastfinish">
+                                    @else
+                                        <input value="{{mds_date('y/m/d',$user->timelastfinish)}}" readonly placeholder="تاریخ " type="text" id="pcal4" class="pdate full-width has-padding has-border" name="timelastfinish">
+                                    @endif
                                 </div>
+
                             </div>
                         </section>
 
@@ -307,36 +299,41 @@
         var objCal1 = new AMIB.persianCalendar( 'pcal1',{
             extraInputID: 'pcal1',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+
         } );
         var objCal2 = new AMIB.persianCalendar( 'pcal2',{
             extraInputID: 'pcal2',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+
         } );
         var objCal3 = new AMIB.persianCalendar( 'pcal3',{
             extraInputID: 'pcal3',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+
+        } );
+        var objCal4 = new AMIB.persianCalendar( 'pcal4',{
+            extraInputID: 'pcal4',
+            extraInputFormat: 'yyyy/mm/dd',
+
         } );
         $('document').ready(function () {
-            $('#show').hide();
-            $("input[name='deficit']").val();
-            $("input[name='timedispatch']").val('0');
-            $("input[name='timearrival']").val('0');
-            $("input[name='timefinish']").val('0');
-            $('#change').change(function () {
-                var val = $(this).val();
-                if(val == 1 || val == 3){
-                    $('#show').show('250');
-                }else{
-                    $('#show').hide('250');
-                    $("input[name='deficit']").val();
-                    $("input[name='timedispatch']").val('0');
-                    $("input[name='timearrival']").val('0');
-                    $("input[name='timefinish']").val('0');
-                }
-            });
+//            $('#show').hide();
+//            $("input[name='deficit']").val();
+//            $("input[name='timedispatch']").val('0');
+//            $("input[name='timearrival']").val('0');
+//            $("input[name='timefinish']").val('0');
+//            $('#change').change(function () {
+//                var val = $(this).val();
+//                if(val == 1 || val == 3){
+//                    $('#show').show('250');
+//                }else{
+//                    $('#show').hide('250');
+//                    $("input[name='deficit']").val();
+//                    $("input[name='timedispatch']").val('0');
+//                    $("input[name='timearrival']").val('0');
+//                    $("input[name='timefinish']").val('0');
+//                }
+//            });
         });
     </script>
 @endsection
