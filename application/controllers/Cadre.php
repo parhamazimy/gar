@@ -143,5 +143,89 @@ class cadre extends CI_Controller
         $this->blade->data('users',$users);
         $this->blade->display('cadre.vacations');
     }
+    ////////////////////////
+    ///
+    ////////////////////////////
+
+    function mission()
+    {
+        $this->blade->data('title','ثبت ماموریت');
+        $this->load->model('model_users');
+        //post
+        if($this->input->post('htimes')){
+            $this->load->model('model_vacations');
+            $this->load->helper('time');
+            //////////////
+            $htimef = explode(':',$this->input->post('htimef'));
+            $timef = explode('/',$this->input->post('timef'));
+            $timef = make_time($htimef[0],$htimef[1],0,$timef[1],$timef[2],$timef[0]);
+            /////////////////////////
+            $htimes = explode(':',$this->input->post('htimes'));
+            $times = explode('/',$this->input->post('times'));
+            $times = make_time($htimes[0],$htimes[1],0,$times[1],$times[2],$times[0]);
+            ///
+            $arraypost = $this->input->post();
+            unset($arraypost['htimes']);
+            unset($arraypost['htimef']);
+            $arraypost['times'] = $times ;
+            $arraypost['timef'] = $timef ;
+            $ress = $this->model_vacations->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_users->findwhere('access ',$access);
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.mission');
+
+    }
+    //////////////////////////
+    ///
+    ////////////////////////////
+    function delay()
+    {
+        $this->blade->data('title','ثبت تاخیر');
+        $this->load->model('model_users');
+        //post
+        if($this->input->post('htimes')){
+            $this->load->model('model_vacations');
+            $this->load->helper('time');
+            //////////////
+            $htimef = explode(':',$this->input->post('htimef'));
+            $timef = explode('/',$this->input->post('timef'));
+            $timef = make_time($htimef[0],$htimef[1],0,$timef[1],$timef[2],$timef[0]);
+            /////////////////////////
+            $htimes = explode(':',$this->input->post('htimes'));
+            $times = explode('/',$this->input->post('times'));
+            $times = make_time($htimes[0],$htimes[1],0,$times[1],$times[2],$times[0]);
+            ///
+            $arraypost = $this->input->post();
+            unset($arraypost['htimes']);
+            unset($arraypost['htimef']);
+            $arraypost['times'] = $times ;
+            $arraypost['timef'] = $timef ;
+            $ress = $this->model_vacations->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_users->findwhere('access ',$access);
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.delay');
+
+    }
+
 
 }
