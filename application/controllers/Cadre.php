@@ -297,7 +297,7 @@ class cadre extends CI_Controller
         $this->load->model('model_vacations');
 
         $vacations = $this->model_vacations->absent($this->session->userdata('access')- 1);
-        $this->blade->data('title','لیست تاخیر ها');
+        $this->blade->data('title','لیست غیبت ها');
         $this->blade->data('vacations',$vacations);
         $this->blade->display('cadre.absent');
     }

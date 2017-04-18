@@ -20,6 +20,14 @@ class model_overtime extends CI_Model
 
     }
 
+    public function solder_overtime($userid)
+    {
+        $this->db->select(' * ,overtime.id AS overtimeid');
+        $this->db->where('userid', $userid);
+        $this->db->join('users', 'users.id = overtime.userid');
+        return  $this->db->get($this->table)->result();
+    }
+
     public function insert($array)
 
     {

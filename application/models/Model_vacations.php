@@ -19,6 +19,25 @@ class model_vacations extends CI_Model
 
     }
 
+
+
+    public function findwhere($column,$val)
+    {
+        $this->db->select(' * ,vacations.id AS vacationsid');
+        $this->db->where($column,$val);
+        $this->db->where('status < ', 5);
+        $this->db->join('users', 'users.id = vacations.userid');
+        return  $this->db->get($this->table)->result();
+    }
+    public function solder_mission($userid)
+    {
+        $this->db->select(' * ,vacations.id AS vacationsid');
+        $this->db->where('status', 6);
+        $this->db->where('userid', $userid);
+        $this->db->join('users', 'users.id = vacations.userid');
+        return  $this->db->get($this->table)->result();
+    }
+
     public function vacations($access)
 
     {
@@ -50,6 +69,15 @@ class model_vacations extends CI_Model
         return  $this->db->get($this->table)->result();
 
     }
+
+    function soldier_delay($userid)
+    {
+        $this->db->select(' * ,vacations.id AS vacationsid');
+        $this->db->where('status', 7);
+        $this->db->where('userid', $userid);
+        $this->db->join('users', 'users.id = vacations.userid');
+        return  $this->db->get($this->table)->result();
+    }
     function absent($access)
     {
         $this->db->select(' * ,vacations.id AS vacationsid');
@@ -59,6 +87,17 @@ class model_vacations extends CI_Model
         $this->db->where('users.access ', $access);
         $this->db->join('users', 'users.id = vacations.userid');
         return  $this->db->get($this->table)->result();
+    }
+    function soldier_absent($access)
+    {
+        $this->db->select(' * ,vacations.id AS vacationsid');
+        $this->db->where('status', 8);
+        $this->db->where('times <',time());
+
+        $this->db->where('users.access ', $access);
+        $this->db->join('users', 'users.id = vacations.userid');
+        return  $this->db->get($this->table)->result();
+
     }
 
     function delete($id)
