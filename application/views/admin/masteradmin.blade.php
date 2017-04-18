@@ -85,7 +85,7 @@
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-plane"></i>افراد عیر حاضر در مجموعه</a></li>
+
                                 <li><a href="{{base_url('admin/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
                             </ul>
                             <ul class="col-sm-4 icon">
@@ -572,11 +572,7 @@
                     </li>
 
 
-                    <li>
-                        <a href="#" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-user-times t#46c35f"></i>افراد غیر حاضر
-                        </a>
-                    </li>
+
                     <li>
                         <a href="{{base_url('admin/register')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-plus-circle t#ff561c"></i>ثبت کاربر جدید

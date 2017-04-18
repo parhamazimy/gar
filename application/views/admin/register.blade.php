@@ -274,17 +274,17 @@
         var objCal1 = new AMIB.persianCalendar( 'pcal1',{
             extraInputID: 'pcal1',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+            initialDate: '1396/02/01'
         } );
         var objCal2 = new AMIB.persianCalendar( 'pcal2',{
             extraInputID: 'pcal2',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+            initialDate: '1396/02/01'
         } );
         var objCal3 = new AMIB.persianCalendar( 'pcal3',{
             extraInputID: 'pcal3',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+            initialDate: '1396/02/01'
         } );
         $('document').ready(function () {
             $('#show').hide();

@@ -72,6 +72,8 @@
                                 استعلاجی
                             @elseif($vacation->status == 4)
                                 استراحتی
+                            @elseif($vacation->status == 8)
+                                بلند مدت
                             @endif
                         </td>
                         <td>{{$vacation->description}}</td>

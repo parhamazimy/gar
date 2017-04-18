@@ -43,6 +43,7 @@ class model_vacations extends CI_Model
     {
         $this->db->select(' * ,vacations.id AS vacationsid');
         $this->db->where('status < ', 5);
+        $this->db->or_where('status',8);
         $this->db->where('users.access ', $access);
         $this->db->join('users', 'users.id = vacations.userid');
         return  $this->db->get($this->table)->result();

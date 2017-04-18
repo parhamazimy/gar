@@ -617,7 +617,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{base_url('admin/users')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                        <a href="{{base_url('cadre/users')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-pencil-square t#ac6bec"></i>مدیریت و ویرایش کاربران
                         </a>
                     </li>

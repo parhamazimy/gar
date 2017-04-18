@@ -47,7 +47,7 @@
                 </section>
                 <label class="control-label col-sm-2">ساعت شروع</label>
                 <section class="col-sm-4">
-                    <input type="time" name="htimes" class="form-control" required>
+                    <input type="time" value="12:01"  name="htimes" class="form-control" required>
                 </section>
             </div>
             <div class="form-group">
@@ -57,7 +57,7 @@
                 </section>
                 <label class="control-label col-sm-2">ساعت پایان</label>
                 <section class="col-sm-4">
-                    <input type="time" class="form-control" name="htimef" required>
+                    <input type="time" value="12:01"  class="form-control" name="htimef" required>
                 </section>
             </div>
             <div class="form-group">
@@ -129,12 +129,12 @@
         var objCal1 = new AMIB.persianCalendar( 'pcal1',{
             extraInputID: 'pcal1',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+            initialDate: '1396/02/01'
         } );
         var objCal2 = new AMIB.persianCalendar( 'pcal2',{
             extraInputID: 'pcal2',
             extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1370/01/01'
+            initialDate: '1396/02/01'
         } );
         $(document).ready(function () {
             $('.userid').click(function () {

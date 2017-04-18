@@ -1,4 +1,4 @@
-@extends('admin.masteradmin')
+@extends('cadre.mastercadre')
 @section('css')
     <link rel="stylesheet" href="{{$root}}public/css/jspc-gray.css">
 @endsection
@@ -7,8 +7,8 @@
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
         <h2 class="page-title">ویرایش کاربر</h2>
         <ol class="breadcrumb">
-            <li><a href="{{base_url('admin')}}.html">پنل ادمین</a></li>
-            <li><a href="{{base_url('admin/users')}}.html">کاربران</a></li>
+            <li><a href="{{base_url('cadre')}}.html">پنل ادمین</a></li>
+            <li><a href="{{base_url('cadre/users')}}.html">کاربران</a></li>
             <li><span>ویرایش کاربر</span></li>
         </ol>
     </div>

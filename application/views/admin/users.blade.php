@@ -92,24 +92,29 @@
 
         </div>
     </div>
+
     <!-- /End Basic table -->
     {!! form_open('admin/users','style="display: none" id="delete" ') !!}
     {!! form_close() !!}
     {!! form_open('admin/edit','style="display: none" id="edit" ') !!}
     {!! form_close() !!}
+
 @endsection
+
 @section('js')
 <script src="{{$root}}public/js/jquery.bootgrid.js"></script>
+
 <script>
     $(document).ready(function () {
         // Basic table
+
         
         $("#grid-basic").bootgrid({
             formatters: {
                 expenseReportEdit: function (column, row) {
-                    return "<div class=\"btn-group btn-group-justified round\"> " +
-                         "<div class='btn-group'><button type='submit' form=\"edit\" name='editid' value='"+ row.expenseId +"' class=\"btn btn-danger waves-effect\">ویرایش </button></div> "+
-                         "<div class='btn-group'><button  form=\"delete\" type='submit' name='deleteid' value='"+ row.expenseId +"' class=\"btn btn-danger waves-effect\">حذف</button></div> "+
+                    return "<div class=\"btn-group btn-group-justified\" > " +
+                         "<div class=\"btn-group\"><button type='submit' form=\"edit\" name='editid' value='"+ row.expenseId +"' class=\"btn btn-warning waves-effect\">ویرایش </button> </div>"+
+                         "<div class=\"btn-group\"><button  form=\"delete\" type='submit' name='deleteid' value='"+ row.expenseId +"' class=\"btn btn-danger waves-effect\">حذف</button>  </div>"+
                         "</div>";
 
                 }
@@ -118,4 +123,7 @@
 
     });
 </script>
+<style type="text/css">
+    #shadow_button button, #cc_button button, #icon_button button{margin: 5px}
+</style>
 @endsection

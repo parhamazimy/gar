@@ -1,4 +1,4 @@
-@extends('cadre.mastercadre')
+@extends('soldier.mastersoldier')
 @section('css')
     <link rel="stylesheet" href="{{$root}}public/css/jquery.bootgrid.css">
 @endsection
@@ -6,7 +6,7 @@
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
         <h2 class="page-title">تاخیر ها</h2>
         <ol class="breadcrumb">
-            <li><a href="{{base_url('cadre/index')}}.html">پنل وظیفه</a></li>
+            <li><a href="{{base_url('soldier/index')}}.html">پنل وظیفه</a></li>
             <li><span>تاخیر ها</span></li>
         </ol>
     </div>
