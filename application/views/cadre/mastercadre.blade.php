@@ -85,6 +85,11 @@
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
+                                <li>
+                                    <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-bolt" ></i>ثبت رویداد
+                                    </a>
+                                </li>
                                 <li><a href="{{base_url('cadre/absent')}}.html" class="b%0=5"><i class="fa fa-user-times"></i>افراد غیر حاضر در مجموعه</a></li>
                                 <li><a href="{{base_url('cadre/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
                                 <li><a href="{{base_url('cadre/vacations_list')}}.html" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی ها</a></li>
@@ -578,6 +583,21 @@
                             <i class="fa fa-user-secret t#ff561c"></i> ویرایش پروفایل
                         </a>
                     </li>
+                    <li>
+                        <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-bolt" style="color: rgba(26,255,81,0.75)"></i>ثبت رویداد
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('cadre/delay_event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-database" style="color: red"></i>ثبت خلا و اضافه خدمت ناشی از خلا
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('cadre/event_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-eye" style="color: rgba(26,255,81,0.75)"></i>مشاهده رویداد
+                        </a>
+                    </li>
 
                     <li>
                         <a href="{{base_url('cadre/absent')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
@@ -729,6 +749,15 @@
 
     });
 </script>
+<style>
+    .page-footer {
+        margin-top: 62px;
+        padding: 15px;
+    }
+    .main_content{
+        background-color: rgb(241, 240, 240) !important;
+    }
+</style>
 @yield('js')
 </body>
 

@@ -49,6 +49,13 @@ class model_vacations extends CI_Model
         return  $this->db->get($this->table)->result();
 
     }
+    function finder($id){
+        $this->db->where('`vacations`.`id`',$id);
+        $this->db->select(' * ,vacations.id AS vacationsid');
+        $this->db->join('users', 'users.id = vacations.userid');
+        return  $this->db->get($this->table)->row();
+
+    }
     public function mission($access)
 
     {
@@ -108,6 +115,7 @@ class model_vacations extends CI_Model
         $this->db->where('id', $id);
 
         return $this->db->delete($this->table);
+
 
     }
 

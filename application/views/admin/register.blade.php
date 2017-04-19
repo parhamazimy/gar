@@ -206,8 +206,12 @@
 
                         </div>
                         <div class="form-group ">
+                            <label class="col-sm-2 control-label">محل تولد</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="birthlocation" required class="form-control">
+                            </div>
                             <label class="col-sm-2  control-label" >تصویر</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-4">
                                 <input required="" name="userfile" type="file" class="form-control form-control-file">
                             </div>
                         </div>

@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">ثبت مرخصی</h2>
+        <h2 class="page-title">ثبت رویداد</h2>
         <ol class="breadcrumb">
             <li><a href="{{base_url('cadre')}}.html">پنل کادر</a></li>
-            <li><span>ثبت مرخصی</span></li>
+            <li><span>ثبت رویداد</span></li>
         </ol>
     </div>
     <div class="panel">
 
         <div class="panel-heading b#c6f9ff ">
-            <i class="fa fa-bed sort-hand"></i> ثبت مرخصی
+            <i class="fa fa-bolt sort-hand"></i> ثبت رویداد
             <div class="pan-btn min"></div>
         </div>
         <div class="panel-body ">
@@ -25,15 +25,11 @@
             @endif
             {!! form_open('','class="form-horizontal" ') !!}
             <div class="form-group">
-                <label class="control-label col-sm-2">نوع مرخصی</label>
+                <label class="control-label col-sm-2">نوع رویداد</label>
                 <section class="col-sm-4">
                     <select name="status" class="form-control">
-                        <option value="0">ساعتی</option>
-                        <option value="1">تشویقی</option>
-                        <option value="2">استحقاقی</option>
-                        <option value="3">استعلاجی</option>
-                        <option value="4">استراحتی</option>
-                        <option value="8">بلند مدت</option>
+                        <option value="0">تشویق</option>
+                        <option value="1">تنبیه</option>
                     </select>
                 </section>
                 <label class="control-label col-sm-2">کد پرسنلی وظیفه</label>
@@ -45,30 +41,17 @@
                     </div>
                 </section>
             </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">زمان بر اساس روز</label>
+                    <section class="col-sm-10">
+                        <input type="number" class="form-control" name="time" required placeholder="تعداد روز">
+                    </section>
+                </div>
+
             <div class="form-group">
-                <label class="control-label col-sm-2">تاریخ شروع</label>
-                <section class="col-sm-4">
-                    <input  readonly placeholder="تاریخ " type="text" id="pcal1" class="pdate full-width has-padding has-border" name="times" required>
-                </section>
-                <label class="control-label col-sm-2">ساعت شروع</label>
-                <section class="col-sm-4">
-                    <input type="time" value="12:01"  name="htimes" class="form-control" required>
-                </section>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">تاریخ پایان</label>
-                <section class="col-sm-4">
-                    <input readonly placeholder="تاریخ " type="text" id="pcal2" class="pdate full-width has-padding has-border" name="timef" required>
-                </section>
-                <label class="control-label col-sm-2">ساعت پایان</label>
-                <section class="col-sm-4">
-                    <input type="time" value="12:01"  class="form-control" name="htimef" required>
-                </section>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2">توضیحات</label>
+                <label class="control-label col-sm-2">نوع عمل</label>
                 <section class="col-sm-10">
-                   <textarea required name="description" class="form-control" rows="5"></textarea>
+                    <textarea required name="description" class="form-control" rows="5"></textarea>
                 </section>
             </div>
             <div class="form-group ">
@@ -131,22 +114,13 @@
     <script src="{{$root}}public/js/js-persian-cal.min.js"></script>
     <script>
 
-        var objCal1 = new AMIB.persianCalendar( 'pcal1',{
-            extraInputID: 'pcal1',
-            extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1396/02/01'
-        } );
-        var objCal2 = new AMIB.persianCalendar( 'pcal2',{
-            extraInputID: 'pcal2',
-            extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1396/02/01'
-        } );
+
         $(document).ready(function () {
-           $('.userid').click(function () {
-              var userid = $(this).val();
-              $('#userid').val(userid);
-              $('#nameid').val(userid);
-           });
+            $('.userid').click(function () {
+                var userid = $(this).val();
+                $('#userid').val(userid);
+                $('#nameid').val(userid);
+            });
         });
 
     </script>

@@ -410,6 +410,98 @@ class cadre extends CI_Controller
         $this->blade->data('user',$user);
         $this->blade->display('cadre.edit');
     }
+    //////////////////////////////////
+    //
+    ///////////////////////////////
+    function event()
+
+    {
+        $this->blade->data('title','ثبت رویداد');
+        $this->load->model('model_users');
+        //post
+        if($this->input->post('time')){
+            $this->load->model('model_event');
+            $this->load->helper('time');
+
+
+            $arraypost = $this->input->post();
+
+            $arraypost['cadreid'] = $this->session->userdata('id') ;
+            $arraypost['namecadre'] = $this->session->userdata('name') ;
+            $arraypost['familycadre'] =$this->session->userdata('family') ;
+            $ress = $this->model_event->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_users->findwhere('access ',$access);
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.event');
+    }
+    /////////////////////
+    ///
+    /////////////////////
+    function event_list()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_event');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_event->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_event->all();
+
+
+
+        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->data('vacations',$vacations);
+        $this->blade->display('cadre.event_list');
+    }
+    /////////////////////
+    ///
+    /////////////////////
+    function delay_event()
+    {
+        $this->blade->data('title','ثبت خلا و اضافه خدمت ناشی از خلا');
+        $this->load->model('model_users');
+        //post
+        if($this->input->post('time')){
+            $this->load->model('model_event');
+            $this->load->helper('time');
+
+
+            $arraypost = $this->input->post();
+
+            $arraypost['cadreid'] = $this->session->userdata('id') ;
+            $arraypost['namecadre'] = $this->session->userdata('name') ;
+            $arraypost['familycadre'] =$this->session->userdata('family') ;
+            $ress = $this->model_event->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_users->findwhere('access ',$access);
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.delay_event');
+
+    }
 
 
 

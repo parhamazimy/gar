@@ -13,7 +13,7 @@
 <div class="panel" id="basic">
     <div class="panel-heading b#ffe7ff">
         <i class="fa fa-bed sort-hand"></i>
-        مرخصی ها
+        ماموریت ها
         <div class="pan-btn expand min"></div>
     </div>
     <div class="panel-body">
@@ -79,6 +79,8 @@
 {!! form_close() !!}
 {!! form_open('admin/edit','style="display: none" id="edit" ') !!}
 {!! form_close() !!}
+{!! form_open('printer/mission','style="display: none" id="print" ') !!}
+{!! form_close() !!}
 @endsection
 @section('js')
 <script src="{{$root}}public/js/jquery.bootgrid.js"></script>
@@ -91,6 +93,7 @@
                 expenseReportEdit: function (column, row) {
                     return "<div class=\"btn-group btn-group-justified round\"> " +
                         "<div class='btn-group'><button  form=\"delete\" type='submit' name='deleteid' value='"+ row.expenseId +"' class=\"btn btn-danger waves-effect\">حذف</button></div> "+
+                        "<div class='btn-group'><button  form=\"print\" type='submit' name='printid' value='"+ row.expenseId +"' class=\"btn btn-danger waves-effect\">چاپ</button></div> "+
                         "</div>";
 
                 }
