@@ -48,7 +48,7 @@ class backup extends CI_Controller
                 $data->registercertificate,$data->adress,$data->postalcode,$data->tell,
                 $data->mob,$data->familiarlocation,$data->familartell,$data->work,$data->Expertise,$data->father,$data->fatherwork,$data->motherwork
                 ,$data->sister,$data->brother,$data->familyno,$data->education,$data->fieldofStudy,$data->blood,$data->religion,$data->hair,
-                $data->eye,$data->stature,$data->weight,$data->timedispatch,$data->timearrival,$data->timefinish,$data->timelastfinish
+                $data->eye,$data->stature,$data->weight,mds_date('y/m/d',$data->timedispatch),mds_date('y/m/d',$data->timearrival),mds_date('y/m/d',$data->timefinish),mds_date('y/m/d',$data->timelastfinish)
                 ,maried($data->married),health($data->health),boomi($data->boomi),$data->deficit];
         }
         $this->excel_xml->addWorksheet('Names', $mydata);

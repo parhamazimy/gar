@@ -53,7 +53,7 @@
                         </div>
                         <label class="col-sm-2  control-label">دین </label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control"  placeholder="دین" value="{{$user->adress}}" disabled required>
+                            <input type="text" class="form-control"  placeholder="دین" value="{{$user->religion}}" disabled required>
                         </div>
                     </div>
                     <div class="form-group ">
@@ -137,9 +137,17 @@
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label class="col-sm-2  control-label">تعداد خواهر</label>
+                        <label class="col-sm-2  control-label" >وضعیت سلامتی</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control"  placeholder="تعداد خواهر" value="{{$user->adress}}"  required>
+                            <select name="health" class="form-control">
+                                @if($user->health == 1)
+                                    <option value="1">سالم</option>
+                                @else
+                                    <option value="0">معاف از رزم</option>
+                                @endif
+                                <option value="1">سالم</option>
+                                <option value="0">معاف از رزم</option>
+                            </select>
                         </div>
                         <label class="col-sm-2  control-label">تعداد افراد خانواده</label>
                         <div class="col-sm-4">
@@ -185,21 +193,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group ">
-                        <label class="col-sm-2  control-label" >وضعیت سلامتی</label>
-                        <div class="col-sm-4">
-                            <select name="health" class="form-control">
-                                @if($user->health == 1)
-                                    <option value="1">سالم</option>
-                                @else
-                                    <option value="0">معاف از رزم</option>
-                                @endif
-                                <option value="1">سالم</option>
-                                <option value="0">معاف از رزم</option>
-                            </select>
-                        </div>
 
-                    </div>
                     <div class="form-group ">
                         <div class="col-sm-12 text-center">
                             <button class="btn btn-block btn-primary pressure waves-effect" type="submit" ><i class="fa fa-pencil-square-o "></i> ویرایش </button>
