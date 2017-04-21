@@ -33,13 +33,13 @@
                 <thead>
                 <tr>
                     <th data-column-id="s1" data-type="numeric" data-visible="true">ردیف</th>
+                    <th data-column-id="s200" data-type="numeric" data-visible="true">کد پرسنلی</th>
                     <th data-column-id="s2">نام</th>
-                    <th data-column-id="s3"> کد ملی</th>
-                    <th data-column-id="s4">نام پدر</th>
-                    <th data-column-id="s5"  data-visible='false'>درجه</th>
-                    <th data-column-id="s6"  data-visible='false'>پست</th>
-                    <th data-column-id="s7">تاریخ اعزام</th>
-                    <th data-column-id="s8">تاریخ پایان خدمت</th>
+                    <th data-column-id="s3"  data-visible='false'> کد ملی</th>
+                    <th data-column-id="s4" data-visible='false'>نام پدر</th>
+                    <th data-column-id="s5"  >درجه</th>
+                    <th data-column-id="s6"  >پست</th>
+                    <th data-column-id="s7"  data-visible='false'>تاریخ شروع خدمت</th>
                     <th data-column-id="s9"  data-visible='false'>شماه تماس</th>
                     <th data-column-id="expenseId" data-formatter="expenseReportEdit">عملیات</th>
                 </tr>
@@ -49,6 +49,7 @@
                 @foreach($users as $user)
                 <tr>
                     <td>{{$i}}</td>
+                    <td>{{$user->id}}</td>
                     <td>{{$user->name.' '.$user->family}}</td>
                     <td>{{$user->nationalcode}}</td>
                     <td>{{$user->father}}</td>
@@ -64,18 +65,12 @@
                             کادر انسانی
                         @endif
                     </td>
+
                     <td>
-                        @if($user->timedispatch == 0)
+                        @if($user->timearrival == 0)
                             0
                         @else
-                            {{mds_date('Y/m/d',$user->timedispatch)}}
-                        @endif
-                    </td>
-                    <td>
-                        @if($user->timefinish == 0)
-                            0
-                        @else
-                            {{mds_date('Y/m/d',$user->timefinish)}}
+                            {{mds_date('Y/m/d',$user->timearrival)}}
                         @endif
 
                     </td>

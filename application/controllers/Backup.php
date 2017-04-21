@@ -27,29 +27,20 @@ class backup extends CI_Controller
         elseif( $this->session->userdata('access') == 0){//admin
             $poordata = $this->model_users->all();
         }
-        elseif( $this->session->userdata('access') == 2){//ensani
-            $poordata = $this->model_users->findwhere('access',1);
-        }
-        elseif( $this->session->userdata('access') == 4){//gharagah
-            $poordata = $this->model_users->findwhere('access',3);
-        }
         else{//admin
             redirect('login');
         }
         //
         $i = 0;
-        $mydata[$i] = ['شناسه','کد ملی','نام','فامیلی','سطح دسترسی','درجه','شماره شناسنامه','محل تولد','محل صدور شناسنامه','آدرس','کد پستی'
-        ,'شماره تماس','موبایل','آدرس آشنا','شماره آشنا','کار','تخصص','پدر','شغل پدر','شغل مادر','تعداد خواهر','تعدار برادر','تعداد خانوار',
-        'تحصیلات','رشته','گروه خونی','مذهب','رنگ مو','رنگ چشک','قد','وزن','تاریخ اعزام','تاریخ ورود',' زمان پایان قانونی','زمان خروج از مجموعه'
-        ,'متاهل','سلامتی','بومی','کسری خدمت'];
+        $mydata[$i] = ['شناسه','کد ملی','نام','فامیلی','سطح دسترسی','درجه','شماره شناسنامه','آدرس','کد پستی'
+        ,'شماره تماس','موبایل','آدرس آشنا','شماره آشنا','پدر',
+        'تحصیلات','رشته','تاریخ خدمت'];
         foreach ($poordata as $data){
             $i++;
-            $mydata[$i] = [$data->id,$data->nationalcode,$data->name,$data->family,rating($data->access),$data->rating,$data->birthcertificate,$data->birthlocation,
-                $data->registercertificate,$data->adress,$data->postalcode,$data->tell,
-                $data->mob,$data->familiarlocation,$data->familartell,$data->work,$data->Expertise,$data->father,$data->fatherwork,$data->motherwork
-                ,$data->sister,$data->brother,$data->familyno,$data->education,$data->fieldofStudy,$data->blood,$data->religion,$data->hair,
-                $data->eye,$data->stature,$data->weight,mds_date('y/m/d',$data->timedispatch),mds_date('y/m/d',$data->timearrival),mds_date('y/m/d',$data->timefinish),mds_date('y/m/d',$data->timelastfinish)
-                ,maried($data->married),health($data->health),boomi($data->boomi),$data->deficit];
+            $mydata[$i] = [$data->id,$data->nationalcode,$data->name,$data->family,rating($data->access),$data->rating,$data->birthcertificate,
+                $data->adress,$data->postalcode,$data->tell,
+                $data->mob,$data->familiarlocation,$data->familartell,$data->father,$data->education,$data->fieldofStudy
+                ,mds_date('y/m/d',$data->timearrival)];
         }
         $this->excel_xml->addWorksheet('Names', $mydata);
         $this->excel_xml->sendWorkbook('users.xls');

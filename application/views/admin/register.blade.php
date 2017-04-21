@@ -57,10 +57,11 @@
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="father"  placeholder="نام پدر"  required>
                             </div>
-                            <label class="col-sm-2  control-label">دین </label>
+                            <label class="col-sm-2  control-label" >تصویر</label>
                             <div class="col-sm-4">
-                                <input type="text" name="religion" class="form-control"  placeholder="دین"  required>
+                                <input required="" name="userfile" type="file" class="form-control form-control-file">
                             </div>
+
                         </div>
                         <div class="form-group ">
                             <label class="col-sm-2  control-label">درجه</label>
@@ -82,17 +83,7 @@
                                 <input type="text" class="form-control" name="fieldofStudy"  placeholder="رشته"  required>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">محل صدور شناسنامه</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="registercertificate" class="form-control"  placeholder="محل صدور شناسنامه"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">تعداد افراد خانواده</label>
-                            <div class="col-sm-4">
-                                <input name="familyno" type="number" class="form-control"  placeholder="تعداد افراد خانواده"   required>
-                            </div>
 
-                        </div>
                         <div class="form-group ">
                             <label class="col-sm-2  control-label">شماره تلفن</label>
                             <div class="col-sm-4">
@@ -123,98 +114,8 @@
                                 <input name="familartell" type="text" class="form-control"  placeholder="تلفن آشنا"   required>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">شغل پدر</label>
-                            <div class="col-sm-4">
-                                <input name="fatherwork" type="text" class="form-control"  placeholder="شغل پدر"   required>
-                            </div>
-                            <label class="col-sm-2  control-label">شغل مادر</label>
-                            <div class="col-sm-4">
-                                <input name="motherwork" type="text" class="form-control"  placeholder="شغل مادر"   required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">تعداد خواهر</label>
-                            <div class="col-sm-4">
-                                <input name="sister" type="number" class="form-control"  placeholder="تعداد خواهر"   required>
-                            </div>
-                            <label class="col-sm-2  control-label">تعداد برادر</label>
-                            <div class="col-sm-4">
-                                <input type="number" name="brother" class="form-control"  placeholder="تعداد برادر"   required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label" >وضعیت سلامتی</label>
-                            <div class="col-sm-4">
-                                <select name="health" class="form-control">
-                                    <option value="1">سالم</option>
-                                    <option value="0">معاف از رزم</option>
-                                </select>
-                            </div>
-                            <label class="col-sm-2  control-label">وضعیت تاهل</label>
-                            <div class="col-sm-4">
-                                <select name="married" class="form-control">
-                                    <option value="0">مجرد</option>
-                                    <option value="1">متاهل</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">گروه خونی</label>
-                            <div class="col-sm-4">
-                                <input name="blood" type="text" class="form-control"  placeholder="گروه خونی"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">رنگ مو</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="hair" class="form-control"  placeholder="رنگ مو"   required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">قد</label>
-                            <div class="col-sm-4">
-                                <input name="stature" type="number" class="form-control"  placeholder="قد"   required>
-                            </div>
-                            <label class="col-sm-2  control-label">وزن</label>
-                            <div class="col-sm-4">
-                                <input type="number" name="weight" class="form-control"  placeholder="وزن"   required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label" > رنگ چشم</label>
-                            <div class="col-sm-4">
-                                <input name="eye" type="text" class="form-control"  placeholder="رنگ چشم"   required>
-                            </div>
-                            <label class="col-sm-2  control-label" > بومی</label>
-                            <div class="col-sm-4">
-                               <select name="boomi" class="form-control">
-                                   <option value="0">غیر بومی</option>
-                                   <option value="1"> بومی</option>
-                               </select>
-                            </div>
 
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label" >تخصص</label>
-                            <div class="col-sm-4">
-                                <input name="Expertise" type="text" class="form-control"  placeholder=" تخصص"   required>
-                            </div>
-                            <label class="col-sm-2  control-label" > شغل قبل از خدمت</label>
-                            <div class="col-sm-4">
-                                <input name="work" type="text" class="form-control"  placeholder="  شغل قبل از خدمت"   required>
-                            </div>
-
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2 control-label">محل تولد</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="birthlocation" required class="form-control">
-                            </div>
-                            <label class="col-sm-2  control-label" >تصویر</label>
-                            <div class="col-sm-4">
-                                <input required="" name="userfile" type="file" class="form-control form-control-file">
-                            </div>
-                        </div>
                         <div class="form-group ">
                             <label class="col-sm-2  control-label" >پست</label>
                             <div class="col-sm-4">
@@ -234,23 +135,10 @@
                         </div>
                        <section id="show">
                            <div class="form-group ">
-                               <label class="col-sm-2  control-label">تاریخ اعزام به خدمت </label>
+
+                               <label class="col-sm-2  control-label">تاریخ شروع خدمت </label>
                                <div class="col-sm-4">
-                               <input readonly placeholder="تاریخ " type="text" id="pcal1" class="pdate full-width has-padding has-border" name="timedispatch">
-                               </div>
-                               <label class="col-sm-2  control-label">تاریخ ورود به مجموعه </label>
-                               <div class="col-sm-4">
-                                   <input readonly placeholder="تاریخ " type="text" id="pcal2" class="pdate full-width has-padding has-border" name="timearrival">
-                               </div>
-                           </div>
-                           <div class="form-group ">
-                               <label class="col-sm-2  control-label">تاریخ خاتمه خدمت قانونی</label>
-                               <div class="col-sm-4">
-                                   <input readonly placeholder="تاریخ " type="text" id="pcal3" class="pdate full-width has-padding has-border" name="timefinish">
-                               </div>
-                               <label class="col-sm-3  control-label">میزان کسری خدمت تأییدشده  </label>
-                               <div class="col-sm-3">
-                                   <input   placeholder="بر حسب روز" type="number"  class="form-control" name="deficit">
+                                   <input readonly placeholder="تاریخ " type="text" id="pcal1" class="pdate full-width has-padding has-border" name="timearrival">
                                </div>
                            </div>
                        </section>
@@ -280,34 +168,34 @@
             extraInputFormat: 'yyyy/mm/dd',
             initialDate: '1396/02/01'
         } );
-        var objCal2 = new AMIB.persianCalendar( 'pcal2',{
-            extraInputID: 'pcal2',
-            extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1396/02/01'
-        } );
-        var objCal3 = new AMIB.persianCalendar( 'pcal3',{
-            extraInputID: 'pcal3',
-            extraInputFormat: 'yyyy/mm/dd',
-            initialDate: '1396/02/01'
-        } );
-        $('document').ready(function () {
-            $('#show').hide();
-            $("input[name='deficit']").val();
-            $("input[name='timedispatch']").val('0');
-            $("input[name='timearrival']").val('0');
-            $("input[name='timefinish']").val('0');
-            $('#change').change(function () {
-                var val = $(this).val();
-                if(val == 1 || val == 3){
-                    $('#show').show('250');
-                }else{
-                    $('#show').hide('250');
-                    $("input[name='deficit']").val();
-                    $("input[name='timedispatch']").val('0');
-                    $("input[name='timearrival']").val('0');
-                    $("input[name='timefinish']").val('0');
-                }
-            });
-        });
+//        var objCal2 = new AMIB.persianCalendar( 'pcal2',{
+//            extraInputID: 'pcal2',
+//            extraInputFormat: 'yyyy/mm/dd',
+//            initialDate: '1396/02/01'
+//        } );
+//        var objCal3 = new AMIB.persianCalendar( 'pcal3',{
+//            extraInputID: 'pcal3',
+//            extraInputFormat: 'yyyy/mm/dd',
+//            initialDate: '1396/02/01'
+//        } );
+//        $('document').ready(function () {
+//            $('#show').hide();
+//            $("input[name='deficit']").val();
+//            $("input[name='timedispatch']").val('0');
+//            $("input[name='timearrival']").val('0');
+//            $("input[name='timefinish']").val('0');
+//            $('#change').change(function () {
+//                var val = $(this).val();
+//                if(val == 1 || val == 3){
+//                    $('#show').show('250');
+//                }else{
+//                    $('#show').hide('250');
+//                    $("input[name='deficit']").val();
+//                    $("input[name='timedispatch']").val('0');
+//                    $("input[name='timearrival']").val('0');
+//                    $("input[name='timefinish']").val('0');
+//                }
+//            });
+//        });
     </script>
 @endsection

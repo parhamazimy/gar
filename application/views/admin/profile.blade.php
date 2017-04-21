@@ -25,7 +25,7 @@
                             <strong>توجه!</strong>{!! $message !!}
                         </div>
                     @endif
-                    {!! form_open('admin/index','class="form-horizontal" ') !!}
+                    {!! form_open('','class="form-horizontal" ') !!}
                         <div class="form-group ">
                             <label class="col-sm-2 text-right  control-label">کد پرسنلی</label>
                             <div class="col-sm-4">
@@ -51,20 +51,23 @@
                             <div class="col-sm-4">
                                 <input type="text" class="form-control"  placeholder="نام پدر" value="{{$user->father}}" disabled required>
                             </div>
-                            <label class="col-sm-2  control-label">مذهب </label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control"  placeholder="دین" value="{{$user->religion}}" disabled required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
                             <label class="col-sm-2  control-label">درجه</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control"  placeholder="درجه" value="{{$user->rating}}" disabled required>
                             </div>
+
+                        </div>
+                        <div class="form-group ">
+
                             <label class="col-sm-2  control-label">شماره شناسنامه </label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control"  placeholder="نام خانوادگی" value="{{$user->birthcertificate}}" disabled required>
                             </div>
+                            <label class="col-sm-2  control-label">تاریخ شروع خدمت </label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control"  placeholder="آدرس" value="{{mds_date('Y/m/d',$user->timearrival)}}" disabled required>
+                            </div>
+
                         </div>
                         <div class="form-group ">
                             <label class="col-sm-2  control-label">مدرک تحصیلی</label>
@@ -76,30 +79,32 @@
                                 <input type="text" class="form-control"  placeholder="رشته" value="{{$user->fieldofStudy}}" disabled required>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">محل صدور شناسنامه</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control"  placeholder="درجه" value="{{$user->registercertificate}}" disabled required>
-                            </div>
-                            <label class="col-sm-2  control-label">تاریخ شروع خدمت </label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control"  placeholder="آدرس" value="{{$user->timearrival}}" disabled required>
-                            </div>
-                        </div>
+
                         <div class="form-group ">
                             <label class="col-sm-2  control-label">شماره تلفن</label>
                             <div class="col-sm-4">
                                 <input name="tell" type="text" class="form-control"  placeholder="شماره تلفن" value="{{$user->tell}}"  required>
+                            </div>
+                            <label class="col-sm-2  control-label">  کد پستی</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="postalcode" class="form-control"  placeholder="  آدرس آشنا" value="{{$user->postalcode}}"  required>
+                            </div>
+
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-2  control-label">  آدرس</label>
+                            <div class="col-sm-4">
+                                <input name="adress" type="text" class="form-control"  placeholder="آدرس" value="{{$user->adress}}"  required>
                             </div>
                             <label class="col-sm-2  control-label">موبایل </label>
                             <div class="col-sm-4">
                                 <input name="mob" type="text" class="form-control"  placeholder="موبایل" value="{{$user->mob}}"  required>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">  آدرس</label>
+                        <div class="form-group">
+                            <label class="col-sm-2  control-label">تلفن آشنا</label>
                             <div class="col-sm-4">
-                                <input name="adress" type="text" class="form-control"  placeholder="آدرس" value="{{$user->adress}}"  required>
+                                <input name="familartell" type="text" class="form-control"  placeholder="تلفن آشنا" value="{{$user->familartell}}"  required>
                             </div>
                             <label class="col-sm-2  control-label">موبایل آشنا</label>
                             <div class="col-sm-4">
@@ -111,89 +116,9 @@
                             <div class="col-sm-4">
                                 <input type="text" name="familiarlocation" class="form-control"  placeholder="  آدرس آشنا" value="{{$user->familiarlocation}}"  required>
                             </div>
-                            <label class="col-sm-2  control-label">تلفن آشنا</label>
-                            <div class="col-sm-4">
-                                <input name="familartell" type="text" class="form-control"  placeholder="تلفن آشنا" value="{{$user->familartell}}"  required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">شغل پدر</label>
-                            <div class="col-sm-4">
-                                <input name="fatherwork" type="text" class="form-control"  placeholder="شغل پدر" value="{{$user->fatherwork}}"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">شغل مادر</label>
-                            <div class="col-sm-4">
-                                <input name="motherwork" type="text" class="form-control"  placeholder="شغل مادر" value="{{$user->motherwork}}"  required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">تعداد خواهر</label>
-                            <div class="col-sm-4">
-                                <input name="sister" type="text" class="form-control"  placeholder="تعداد خواهر" value="{{$user->sister}}"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">تعداد برادر</label>
-                            <div class="col-sm-4">
-                                <input type="brother" class="form-control"  placeholder="تعداد برادر" value="{{$user->brother}}"  required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label" >وضعیت سلامتی</label>
-                            <div class="col-sm-4">
-                                <select name="health" class="form-control">
-                                    @if($user->health == 1)
-                                        <option value="1">سالم</option>
-                                    @else
-                                        <option value="0">معاف از رزم</option>
-                                    @endif
-                                    <option value="1">سالم</option>
-                                    <option value="0">معاف از رزم</option>
-                                </select>
-                            </div>
 
-                            <label class="col-sm-2  control-label">تعداد افراد خانواده</label>
-                            <div class="col-sm-4">
-                                <input name="familyno" type="text" class="form-control"  placeholder="تعداد افراد خانواده" value="{{$user->familyno}}"  required>
-                            </div>
                         </div>
 
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">گروه خونی</label>
-                            <div class="col-sm-4">
-                                <input name="blood" type="text" class="form-control"  placeholder="گروه خونی" value="{{$user->blood}}"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">رنگ مو</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="hair" class="form-control"  placeholder="رنگ مو" value="{{$user->hair}}"  required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label">قد</label>
-                            <div class="col-sm-4">
-                                <input name="stature" type="text" class="form-control"  placeholder="فد" value="{{$user->stature}}"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">وزن</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="weight" class="form-control"  placeholder="وزن" value="{{$user->weight}}"  required>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label class="col-sm-2  control-label" > رنگ چشم</label>
-                            <div class="col-sm-4">
-                                <input name="eye" type="text" class="form-control"  placeholder="رنگ چشم" value="{{$user->eye}}"  required>
-                            </div>
-                            <label class="col-sm-2  control-label">وضعیت تاهل</label>
-                            <div class="col-sm-4">
-                                <select name="married" class="form-control">
-                                    @if($user->married == 1)
-                                        <option value="1">متاهل</option>
-                                    @else
-                                        <option value="0">مجرد</option>
-                                    @endif
-                                    <option value="0">مجرد</option>
-                                    <option value="1">متاهل</option>
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="form-group ">
                             <div class="col-sm-12 text-center">

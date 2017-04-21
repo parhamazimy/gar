@@ -23,8 +23,11 @@ class admin extends CI_Controller {
     {
         $this->blade->data('title','داشبورد پنل مدیریت');
         $this->load->model('model_users');
+        $this->load->helper('time');
 
-        if($this->input->post('blood') and $this->input->post('tell')){
+        //edit
+        if( $this->input->post('tell') != null){
+
             $ress = $this->model_users->update($this->input->post(),$this->session->userdata('id'));
             if($ress){
                 $this->blade->data('message','تغییرات ثبت شد .');
@@ -106,23 +109,15 @@ class admin extends CI_Controller {
         if($this->input->post('nationalcode') and $this->input->post('fieldofStudy')){
 
             $arrayinsert = $this->input->post();
-            if($this->input->post('access') == 1 or $this->input->post('access')== 3 ){
-                if($this->input->post('timedispatch') == 0 or $this->input->post('timearrival') == 0 or $this->input->post('timefinish') == 0){
-                    $this->blade->data('message','لطفا تاریخ صحیح وارد کنید .');
-                }else{
-                    $timedispatch = register_helper($this->input->post('timedispatch'));
-                    $timearrival = register_helper($this->input->post('timearrival'));
-                    $timefinish = register_helper($this->input->post('timefinish'));
 
-                    $arrayinsert['timedispatch'] = $timedispatch;
-                    $arrayinsert['timearrival'] = $timearrival;
-                    $arrayinsert['timefinish'] = $timefinish;
-                    $insertid = $this->model_users->insert($arrayinsert);
-                }
-            }else{
-                $insertid = $this->model_users->insert($arrayinsert);
-                echo $insertid;
-            }
+
+            $timearrival = register_helper($this->input->post('timearrival'));
+
+
+            $arrayinsert['timearrival'] = $timearrival;
+
+            $insertid = $this->model_users->insert($arrayinsert);
+
             //upload
             if(isset($_FILES['userfile']) and !empty($insertid)){
                 $config['upload_path']          = './public/img/users/';
@@ -190,41 +185,35 @@ class admin extends CI_Controller {
     function edit(){
         $this->blade->data('title','ویرایش کاربر');
         $this->load->helper('time');
+
         if(!$this->input->post('editid')){
+
            redirect('admin/users');
         }
+
         $this->load->model('model_users');
         $user = $this->model_users->find($this->input->post('editid'));
         if(!$user){
             redirect('admin/users');
         }
         //update
-        if($this->input->post('weight')){
+        if($this->input->post('access')){
             $arrayinsert = $this->input->post();
             unset($arrayinsert['editid']);
-            if($this->input->post('access') == 1 or $this->input->post('access')== 3 ){
-                if($this->input->post('timedispatch') == 0 or $this->input->post('timearrival') == 0 or $this->input->post('timefinish') == 0){
-                    $this->blade->data('message','لطفا تاریخ صحیح وارد کنید .');
-                    goto a ;
-                }else{
-                    $timedispatch = register_helper($this->input->post('timedispatch'));
-                    $timearrival = register_helper($this->input->post('timearrival'));
-                    $timefinish = register_helper($this->input->post('timefinish'));
+            $timearrival = register_helper($this->input->post('timearrival'));
 
-                    $arrayinsert['timedispatch'] = $timedispatch;
-                    $arrayinsert['timearrival'] = $timearrival;
-                    $arrayinsert['timefinish'] = $timefinish;
-                    $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
-                }
-            }else{
-                $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
-            }
+
+            $arrayinsert['timearrival'] = $timearrival;
+            $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
+
             if($update){
+
                 $this->blade->data('message','انجام شد');
             }else{
                 $this->blade->data('message','تغییری ثبت نشد');
+
             }
-            a :
+
         }
         //
         $user = $this->model_users->find($this->input->post('editid'));
