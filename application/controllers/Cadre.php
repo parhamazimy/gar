@@ -24,8 +24,9 @@ class cadre extends CI_Controller
     {
         $this->blade->data('title','پروفایل');
         $this->load->model('model_users');
+        $this->load->helper('time');
 
-        if($this->input->post('blood') and $this->input->post('tell')){
+        if( $this->input->post('tell')){
             $ress = $this->model_users->update($this->input->post(),$this->session->userdata('id'));
             if($ress){
                 $this->blade->data('message','تغییرات ثبت شد .');
@@ -99,12 +100,379 @@ class cadre extends CI_Controller
 
         $this->blade->display('cadre.profile');
     }
+    //////////////////////
+    //
+    ////////////////////////
+    function register()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_units');
+        if($this->input->post('nationalcode') and $this->input->post('fieldofStudy')){
+
+            $arrayinsert = $this->input->post();
+
+
+            $timearrival = register_helper($this->input->post('timearrival'));
+            $timedispatch = register_helper($this->input->post('timedispatch'));
+            $timefinish = register_helper($this->input->post('timefinish'));
+            $timelastfinish = register_helper($this->input->post('timelastfinish'));
+
+
+            $arrayinsert['timearrival'] = $timearrival;
+            $arrayinsert['timedispatch'] = $timedispatch;
+            $arrayinsert['timefinish'] = $timefinish;
+            $arrayinsert['timelastfinish'] = $timelastfinish;
+
+            $insertid = $this->model_units->insert($arrayinsert);
+
+            //upload
+            if(isset($_FILES['userfile']) and !empty($insertid)){
+                $config['upload_path']          = './public/img/users/';
+                $config['allowed_types']        = 'jpg|png|jpeg';
+                $config['max_size']             = 1024;
+                $config['max_width']            = 1920;
+                $config['max_height']           = 1080;
+                $config['file_name']           =   $this->session->userdata('id');
+                $config['allowed_types']        = 'jpg|png|jpeg';
+                $config['max_size']             = 1024;
+                $config['max_width']            = 1920;
+                $config['max_height']           = 1080;
+                $config['file_name']           = $insertid;
+                $config['overwrite']           = true;
+                $this->load->library('upload', $config);
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                    $error =  $this->upload->display_errors();
+                    $this->model_units->delete($insertid);
+                    $this->blade->data('message',$error);
+                }else{
+                    $path = $this->upload->data('file_name');
+                    $upload = $this->model_units->update(['pic'=>$path],$insertid);
+                    if($upload){
+                        $this->blade->data('message','ثبت نام با موفقیت انجام شد .');
+                    }else{
+                        // $this->blade->data('message','خطادر پایگاه داده');
+                        $this->blade->data('message','ثبت نام با موفقیت انجام شد .!!');
+                    }
+                }
+            }else{
+                $this->blade->data('message','خطا .!!');
+            }
+            //
+
+        }
+        $this->blade->data('title','ثبت نیرو');
+        $this->blade->display('cadre.register');
+
+    }
 
 
     /////////////////////////
     //
     ////////////////////////
+    function units()
+    {
+        $this->load->model('model_units');
+        if($this->input->post('deleteid')){
+            $result = $this->model_units->delete($this->input->post('deleteid'));
+            if($result){
+                $this->blade->data('message','حذف شد');
+            }else{
+                $this->blade->data('message','خطا');
+            }
+        }
+        $this->load->helper('time');
+        $this->blade->data('title','مدیریت کاربران');
 
+        $users = $this->model_units->all();
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.units');
+    }
+    //////////////////////////////////
+    //
+    ///////////////////////////////
+    function edit()
+    {
+        $this->blade->data('title','ویرایش نیروها');
+        $this->load->helper('time');
+        if(!$this->input->post('editid')){
+            redirect('cadre/units');
+        }
+        $this->load->model('model_units');
+        $user = $this->model_units->find($this->input->post('editid'));
+        if(!$user){
+            redirect('cadre/users');
+        }
+        //update
+        if($this->input->post('weight')){
+            $arrayinsert = $this->input->post();
+            unset($arrayinsert['editid']);
+            $timedispatch = register_helper($this->input->post('timedispatch'));
+            $timearrival = register_helper($this->input->post('timearrival'));
+            $timefinish = register_helper($this->input->post('timefinish'));
+            $timelastfinish = register_helper($this->input->post('timelastfinish'));
+
+            $arrayinsert['timedispatch'] = $timedispatch;
+            $arrayinsert['timearrival'] = $timearrival;
+            $arrayinsert['timefinish'] = $timefinish;
+            $arrayinsert['timelastfinish'] = $timelastfinish;
+            $update = $this->model_units->update($arrayinsert,$this->input->post('editid'));
+
+            if($update){
+                $this->blade->data('message','انجام شد');
+            }else{
+                $this->blade->data('message','تغییری ثبت نشد');
+            }
+        }
+        //
+        $user = $this->model_units->find($this->input->post('editid'));
+        $this->blade->data('user',$user);
+        $this->blade->display('cadre.edit');
+    }
+    //////////////////////////////
+    //
+    //////////////////////////////
+    function event2()
+    {
+        $this->blade->data('title','ثبت رویداد نوع 2');
+        $this->load->model('model_units');
+        //post
+        if($this->input->post('status') != null){
+            $this->load->model('model_vacations');
+            $this->load->helper('time');
+            //////////////
+            $htimef = explode(':',$this->input->post('htimef'));
+            $timef = explode('/',$this->input->post('timef'));
+            $timef = make_time($htimef[0],$htimef[1],0,$timef[1],$timef[2],$timef[0]);
+            /////////////////////////
+            $htimes = explode(':',$this->input->post('htimes'));
+            $times = explode('/',$this->input->post('times'));
+            $times = make_time($htimes[0],$htimes[1],0,$times[1],$times[2],$times[0]);
+            ///
+            $arraypost = $this->input->post();
+            unset($arraypost['htimes']);
+            unset($arraypost['htimef']);
+            $arraypost['times'] = $times ;
+            $arraypost['timef'] = $timef ;
+            $arraypost['inserttime'] = time() ;
+            //
+            if($this->input->post('status') != 6) {
+                $arraypost['type'] = '-' ;
+            }
+
+            //
+            $ress = $this->model_vacations->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+        $access = $this->session->userdata('access') - 1 ;
+        $users = $this->model_units->all();
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.event2');
+    }
+    ////////////////////////
+    //
+    //////////////////////
+    function event2_list()
+    {
+
+        $this->load->helper('time');
+        $this->load->model('model_vacations');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_vacations->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_vacations->all();
+        $this->blade->data('vacations',$vacations);
+        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->display('cadre.event2_list');
+    }
+    ///////////////////////
+    //
+    //////////////////////
+    function event()
+    {
+        $this->blade->data('title','ثبت رویداد نوع 1');
+        $this->load->model('model_units');
+        $this->load->model('model_event');
+        //post
+        if($this->input->post('stat') != null){
+            $this->load->model('model_vacations');
+            $this->load->helper('time');
+            //////////////
+            $timef = explode('/',$this->input->post('timef'));
+            $timef = make_time(0,0,0,$timef[1],$timef[2],$timef[0]);
+            /////////////////////////
+            $times = explode('/',$this->input->post('times'));
+            $times = make_time(0,0,0,$times[1],$times[2],$times[0]);
+            ///
+            $arraypost = $this->input->post();
+
+            $arraypost['times'] = $times ;
+            $arraypost['timef'] = $timef ;
+            $arraypost['userid'] = $this->session->userdata('id') ;
+            $arraypost['inserttime'] = time() ;
+            //
+            if($this->input->post('stat') == 0) {
+                $arraypost['action'] = '-' ;
+            }else{
+                $arraypost['times'] = '-' ;
+                $arraypost['timef'] = '-' ;
+                $arraypost['delay'] = '-' ;
+            }
+
+            //
+            $ress = $this->model_event->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+
+        $users = $this->model_units->all();
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.event');
+
+    }
+    ///////////////////////
+    //
+    /////////////////////////
+    function event_list()
+    {
+
+        $this->load->helper('time');
+        $this->load->model('model_event');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_event->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_event->all();
+        $this->blade->data('vacations',$vacations);
+        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->display('cadre.event_list');
+    }
+    ////////////////////////////////
+    //
+    ////////////////////////////////
+    function leave()
+    {
+        $this->blade->data('title','ثبت رویداد نوع 1');
+        $this->load->model('model_units');
+        $this->load->model('model_leave');
+        //post
+        if($this->input->post('condition') != null){
+
+            $this->load->helper('time');
+            //////////////
+            //////////////
+            $htimef = explode(':',$this->input->post('htimef'));
+            $timef = explode('/',$this->input->post('timef'));
+            $timef = make_time($htimef[0],$htimef[1],0,$timef[1],$timef[2],$timef[0]);
+            /////////////////////////
+            $htimes = explode(':',$this->input->post('htimes'));
+            $times = explode('/',$this->input->post('times'));
+            $times = make_time($htimes[0],$htimes[1],0,$times[1],$times[2],$times[0]);
+            ///
+            $arraypost = $this->input->post();
+            unset($arraypost['htimes']);
+            unset($arraypost['htimef']);
+
+            if($this->input->post('condition') != '0'){
+                unset($arraypost['closures']);
+                unset($arraypost['entitlement']);
+                unset($arraypost['way']);
+                unset($arraypost['encouragement']);
+                unset($arraypost['rest']);
+                //
+                $arraypost['closures'] = '-' ;
+                $arraypost['entitlement'] = '-' ;
+                $arraypost['way'] = '-' ;
+                $arraypost['encouragement'] = '-' ;
+                $arraypost['rest'] = '-' ;
+            }
+            $arraypost['times'] = $times ;
+            $arraypost['timef'] = $timef ;
+            $arraypost['inserttime'] = time() ;
+            //
+
+            //
+            $ress = $this->model_leave->insert($arraypost);
+            if($ress){
+                $this->blade->data('message','ثبت شد');
+            }else{
+                $this->blade->data('message','خطا در ثبت ');
+            }
+        }
+        //end post
+
+
+
+        $users = $this->model_units->all();
+        $this->blade->data('users',$users);
+        $this->blade->display('cadre.leave');
+    }
+    //////////////////////////
+    //
+    //////////////////////////////////
+    function leave_list()
+    {
+        $this->load->helper('time');
+        $this->load->model('model_leave');
+        if($this->input->post('deleteid')){
+
+            $ressdel = $this->model_leave->delete($this->input->post('deleteid'));
+            if($ressdel){
+                $this->blade->data('message','حذف شد .');
+            }else{
+                $this->blade->data('message','خطا در حذف .');
+            }
+        }
+        $vacations = $this->model_leave->all();
+        $this->blade->data('vacations',$vacations);
+        $this->blade->data('title','لیست مرخصی  ها');
+        $this->blade->display('cadre.leave_list');
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //----------------------------\\
 
     function vacations()
     {
@@ -351,69 +719,12 @@ class cadre extends CI_Controller
     ///////////////////////////////
     //
     /////////////////////////////
-    function users()
-    {
-        $this->load->model('model_users');
-        if($this->input->post('deleteid')){
-            $result = $this->model_users->delete($this->input->post('deleteid'));
-            if($result){
-                $this->blade->data('message','حذف شد');
-            }else{
-                $this->blade->data('message','خطا');
-            }
-        }
-        $this->load->helper('time');
-        $this->blade->data('title','مدیریت کاربران');
 
-        $users = $this->model_users->access($this->session->userdata('access')-1);
-        $this->blade->data('users',$users);
-        $this->blade->display('cadre.users');
-    }
     /////////////////////////////////
     //
     /////////////////////////////////
-    function edit()
-    {
-        $this->blade->data('title','ویرایش کاربر');
-        $this->load->helper('time');
-        if(!$this->input->post('editid')){
-            redirect('cadre/users');
-        }
-        $this->load->model('model_users');
-        $user = $this->model_users->find($this->input->post('editid'));
-        if(!$user){
-            redirect('cadre/users');
-        }
-        //update
-        if($this->input->post('weight')){
-            $arrayinsert = $this->input->post();
-            unset($arrayinsert['editid']);
-            $timedispatch = register_helper($this->input->post('timedispatch'));
-            $timearrival = register_helper($this->input->post('timearrival'));
-            $timefinish = register_helper($this->input->post('timefinish'));
-            $timelastfinish = register_helper($this->input->post('timelastfinish'));
 
-            $arrayinsert['timedispatch'] = $timedispatch;
-            $arrayinsert['timearrival'] = $timearrival;
-            $arrayinsert['timefinish'] = $timefinish;
-            $arrayinsert['timelastfinish'] = $timelastfinish;
-            $update = $this->model_users->update($arrayinsert,$this->input->post('editid'));
-
-            if($update){
-                $this->blade->data('message','انجام شد');
-            }else{
-                $this->blade->data('message','تغییری ثبت نشد');
-            }
-        }
-        //
-        $user = $this->model_users->find($this->input->post('editid'));
-        $this->blade->data('user',$user);
-        $this->blade->display('cadre.edit');
-    }
-    //////////////////////////////////
-    //
-    ///////////////////////////////
-    function event()
+    function eventss()
 
     {
         $this->blade->data('title','ثبت رویداد');
@@ -447,7 +758,7 @@ class cadre extends CI_Controller
     /////////////////////
     ///
     /////////////////////
-    function event_list()
+    function tevent_list()
     {
         $this->load->helper('time');
         $this->load->model('model_event');

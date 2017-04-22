@@ -4,9 +4,13 @@ date_default_timezone_set('Asia/Tehran');
 function mds_date($format, $when="now", $persianNumber = 0)
 {
     ///chosse your timezone
+    if($when == '-'){
+        return '-' ;
+    }
     if($when == 0){
         return 0 ;
     }
+
     $TZhours=0;
     $TZminute=0;
     $need="";

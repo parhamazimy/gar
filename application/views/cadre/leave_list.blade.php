@@ -25,7 +25,7 @@
             @endif
             <div class="row">
                 <div class="col-lg-3 text-center">
-                    <a target="_blank" class="btn btn-primary" href="{{base_url('backup/vacations')}}"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
+                    <a target="_blank" class="btn btn-primary" href="{{base_url('backup/leave')}}"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
                 </div>
             </div>
 
@@ -33,15 +33,24 @@
                 <thead>
                 <tr>
                     <th data-column-id="s1" data-type="numeric" data-visible="true">ردیف</th>
-                    <th data-column-id="s2" data-type="numeric">کد پرسنل</th>
-                    <th data-column-id="s3" data-type="numeric" data-visible='false'> کد ملی</th>
-                    <th data-column-id="s4">نام</th>
-                    <th data-column-id="s5"  data-visible='false'>نام پدر</th>
-                    <th data-column-id="s6"  data-visible='false'>درجه</th>
-                    <th data-column-id="s7">تاریخ شروع</th>
-                    <th data-column-id="s8">تاریخ پایان </th>
-                    <th data-column-id="s9">نوع مرخصی </th>
-                    <th data-column-id="s10"  data-visible='false'>توضیحات</th>
+                    <th data-column-id="s2"  data-visible="true">نوع رویداد</th>
+                    <th data-column-id="s3" data-type="numeric" data-visible="true">شماره</th>
+                    <th data-column-id="s4"  data-visible="true">تاریخ ثبت</th>
+                    <th data-column-id="s5"  data-visible="true">نام</th>
+                    <th data-column-id="s6"  data-visible="false">ساعت شروع</th>
+                    <th data-column-id="s7"  data-visible="false">تاریخ شروع</th>
+                    <th data-column-id="s8"  data-visible="false">ساعت پایان</th>
+                    <th data-column-id="s9" data-visible="false">تاریخ پایان</th>
+                    <th data-column-id="s10" data-type="numeric" data-visible="true">مدت (روز)</th>
+                    <th data-column-id="b10"  data-visible="true">علت</th>
+                    <th data-column-id="b11"  data-visible="false">تعطیلی</th>
+                    <th data-column-id="b12"  data-visible="false">استحقاقی</th>
+                    <th data-column-id="b13"  data-visible="false">بین راهی</th>
+                    <th data-column-id="b14"  data-visible="false">تشویقی</th>
+                    <th data-column-id="b15"  data-visible="false">استراحتی</th>
+
+
+
                     <th data-column-id="expenseId" data-formatter="expenseReportEdit">عملیات</th>
                 </tr>
                 </thead>
@@ -50,34 +59,38 @@
                 @foreach($vacations as $vacation)
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{{$vacation->userid}}</td>
-                        <td>{{$vacation->nationalcode}}</td>
-                        <td>{{$vacation->name.' '.$vacation->family}}</td>
-                        <td>{{$vacation->father}}</td>
-                        <td>{{$vacation->rating}}</td>
                         <td>
-                            {{mds_date('Y/m/d h:i',$vacation->times)}}
-                        </td>
-                        <td>
-                            {{mds_date('Y/m/d h:i',$vacation->timef)}}
-                        </td>
-                        <td>
-                            @if($vacation->status == 0)
-                               ساعتی
-                            @elseif($vacation->status == 1)
-                                تشویقی
-                            @elseif($vacation->status == 2)
-                                استحقاقی
-                            @elseif($vacation->status == 3)
-                                استعلاجی
-                            @elseif($vacation->status == 4)
-                                استراحتی
-                            @elseif($vacation->status == 8)
-                                بلند مدت
+                            @if($vacation->condition == 0)
+                                مرخصی بلند مدت
+                            @else
+                               {{$vacation->condition}}
                             @endif
                         </td>
-                        <td>{{$vacation->description}}</td>
-                        <td>{{$vacation->vacationsid}}</td>
+                        <td>{{$vacation->number}}</td>
+                        <td>{{mds_date('Y/m/d h:i',$vacation->inserttime)}}</td>
+                        <td>{{$vacation->name.' '.$vacation->family}}</td>
+                        <td>
+                                {{mds_date(' h:i',$vacation->times)}}
+                        </td>
+                        <td>
+                            {{mds_date('Y/m/d',$vacation->times)}}
+                        </td>
+                        <td>
+                                {{mds_date(' h:i',$vacation->timef)}}
+                        </td>
+                        <td>
+                            {{mds_date('Y/m/d',$vacation->timef)}}
+                        </td>
+                        <td>{{$vacation->time}}</td>
+                        <td>{{$vacation->text}}</td>
+                        <td>{{$vacation->closures}}</td>
+                        <td>{{$vacation->entitlement}}</td>
+                        <td>{{$vacation->way}}</td>
+                        <td>{{$vacation->encouragement}}</td>
+                        <td>{{$vacation->rest}}</td>
+
+
+                        <td>{{$vacation->leaveid}}</td>
 
                         <?php $i++ ?>
 
@@ -91,7 +104,7 @@
         </div>
     </div>
     <!-- /End Basic table -->
-    {!! form_open('cadre/vacations_list','style="display: none" id="delete" ') !!}
+    {!! form_open('','style="display: none" id="delete" ') !!}
     {!! form_close() !!}
     {!! form_open('admin/edit','style="display: none" id="edit" ') !!}
     {!! form_close() !!}

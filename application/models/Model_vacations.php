@@ -18,6 +18,12 @@ class model_vacations extends CI_Model
         return $this->db->insert_id();
 
     }
+    public function all()
+    {
+        $this->db->select(' * ,vacations.id AS vacationsid,vacations.description AS description');
+        $this->db->join('units', 'units.id = vacations.unitid');
+        return  $this->db->get($this->table)->result();
+    }
 
 
 

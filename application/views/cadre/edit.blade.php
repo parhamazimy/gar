@@ -20,7 +20,7 @@
                 <!-- Popover -->
                 <div class="panel" id="popover">
                     <div class="panel-heading b#dfffc6">
-                        <i class="fa fa-pencil-square sort-hand"></i>   ویرایش کاربر
+                        <i class="fa fa-pencil-square sort-hand"></i>   ویرایش نیرو
 
                         <div class="pan-btn expand min"></div>
                     </div>
@@ -38,10 +38,7 @@
                             <div class="col-sm-4">
                                 <input type="number" value="{{$user->nationalcode}}" class="form-control"  placeholder=" کد ملی" disabled  required>
                             </div>
-                            <label class="col-sm-2 text-right  control-label">رمز عبور</label>
-                            <div class="col-sm-4">
-                                <input name="password" value="{{$user->password}}" type="text" class="form-control"  placeholder="رمز عبور"  required>
-                            </div>
+
                         </div>
                         <div class="form-group ">
                             <label class="col-sm-2  control-label">نام</label>

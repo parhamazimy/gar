@@ -131,26 +131,7 @@
     <!-- side panel -->
     <section id="side_panel" class="b#fff">
         <div class="board">
-            <div class="board-inner">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#options" data-toggle="tab">
-                            <span class="fa fa-lg fa-cogs round-tabs" data-toggle="tooltip" title="تنظیمات"></span>
-                        </a>
-                    </li>
-                    <li id="taskbtn">
-                        <a href="#tasks" data-toggle="tab">
-                            <span class="fa fa-lg fa-tasks round-tabs" data-toggle="tooltip" title="کارها"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#chats" data-toggle="tab">
-                            <span class="fa fa-lg fa-comments round-tabs" data-placement="top" data-toggle="tooltip" title="گفت و گوها"></span>
-                            <span class="label blink label-success chat-alert">12</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
 
             <div class="tab-content">
 

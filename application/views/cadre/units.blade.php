@@ -25,7 +25,7 @@
             @endif
             <div class="row">
                 <div class="col-lg-3 text-center">
-                    <a target="_blank" class="btn btn-primary" href="{{$root}}backup.html"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
+                    <a target="_blank" class="btn btn-primary" href="{{$root}}backup/units.html"><i class="fa fa-archive"></i>  پشتیبان گیری به صورت فایل اکسل </a>
                 </div>
             </div>
 
@@ -36,10 +36,10 @@
                     <th data-column-id="s2">نام</th>
                     <th data-column-id="s3"> کد ملی</th>
                     <th data-column-id="s4">نام پدر</th>
-                    <th data-column-id="s5"  data-visible='false'>درجه</th>
-                    <th data-column-id="s6"  data-visible='false'>پست</th>
-                    <th data-column-id="s7">تاریخ اعزام</th>
-                    <th data-column-id="s8">تاریخ پایان خدمت</th>
+                    <th data-column-id="s5"  >درجه</th>
+                    <th data-column-id="s5"  >واخد خدمت</th>
+                    <th data-column-id="s7" data-visible='false'>تاریخ اعزام</th>
+                    <th data-column-id="s8" data-visible='false'>تاریخ پایان خدمت</th>
                     <th data-column-id="s9"  data-visible='false'>شماه تماس</th>
                     <th data-column-id="expenseId" data-formatter="expenseReportEdit">عملیات</th>
                 </tr>
@@ -53,17 +53,7 @@
                         <td>{{$user->nationalcode}}</td>
                         <td>{{$user->father}}</td>
                         <td>{{$user->rating}}</td>
-                        <td>
-                            @if($user->access == 1)
-                                وظیفه گردان
-                            @elseif($user->access == 2)
-                                کادر گردان
-                            @elseif($user->access == 3)
-                                وظیفه نیروی انسانی
-                            @elseif($user->access == 4)
-                                کادر انسانی
-                            @endif
-                        </td>
+                        <td>{{$user->serviceunit}}</td>
                         <td>
                             @if($user->timedispatch == 0)
                                 0
@@ -93,7 +83,7 @@
         </div>
     </div>
     <!-- /End Basic table -->
-    {!! form_open('cadre/users','style="display: none" id="delete" ') !!}
+    {!! form_open('','style="display: none" id="delete" ') !!}
     {!! form_close() !!}
     {!! form_open('cadre/edit','style="display: none" id="edit" ') !!}
     {!! form_close() !!}

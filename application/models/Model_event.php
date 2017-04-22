@@ -10,14 +10,6 @@ class model_event extends CI_Model
         $this->table = 'event';
     }
 
-    function finder($id){
-        $this->db->where('`event`.`id`',$id);
-        $this->db->select(' * ,event.id AS vacationsid');
-        $this->db->join('users', 'users.id = event.userid');
-        return  $this->db->get($this->table)->row();
-
-    }
-
     public function insert($array)
 
     {
@@ -26,24 +18,41 @@ class model_event extends CI_Model
         return $this->db->insert_id();
 
     }
+    public function all()
+
+    {
+        $this->db->select(' * ,users.name AS cadrename , users.family AS cadrefamily , users.rating AS cadrerating , users.access AS cadreaccess');
+
+        $this->db->join('users', 'users.id = event.userid');
+        $this->db->join('units', 'units.id = event.unitid');
+
+        return  $this->db->get($this->table)->result();
+
+    }
     function delete($id)
 
     {
 
-        $this->db->where('id', $id);
+        $this->db->where('eventid', $id);
 
         return $this->db->delete($this->table);
 
     }
-    public function all()
 
-    {
+
+
+    //--------------\\
+    function finder($id){
+        $this->db->where('`event`.`id`',$id);
         $this->db->select(' * ,event.id AS vacationsid');
-
         $this->db->join('users', 'users.id = event.userid');
-        return  $this->db->get($this->table)->result();
+        return  $this->db->get($this->table)->row();
 
     }
+
+
+
+
 
 
 
