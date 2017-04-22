@@ -84,17 +84,37 @@
 
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
-                                <li><a href="{{base_url('soldier/absent')}}.html" class="b%0=5"><i class="fa fa-user-times"></i>مرخصی بلند مدت همکاران</a></li>
-                                <li><a href="{{base_url('soldier/vacations')}}.html" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی های من</a></li>
-                                <li><a href="{{base_url('soldier/overtime')}}.html" class="b%0=5"><i class="fa fa-hourglass-half"></i>اضافه خدمت</a></li>
+
+                                <!-- Dashboard -->
+                                <li>
+                                    <a href="{{base_url('soldier/index')}}.html">
+                                        <i class="fa fa-user-secret t#ff561c"></i> ویرایش پروفایل
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{base_url('soldier/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                                    </a>
+                                </li>
+
+
+
+
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
+                                <li>
+                                    <a href="{{base_url('soldier/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                                    </a>
+                                </li>
 
-                                <li><a href="{{base_url('soldier/mission')}}.html" class="b%0=5"><i class="fa fa-plane"></i> ماموریت</a></li>
-                                <li><a href="{{base_url('soldier/delay')}}.html" class="b%0=5"><i class="fa fa-clock-o"></i>تاخیر های من</a></li>
-                                <li><a href="{{$root}}" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
+                                <li>
+                                    <a href="{{base_url('login')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-sign-out" style="color: red"></i>خروج
+                                    </a>
+                                </li>
+
                             </ul>
 
 
@@ -550,39 +570,24 @@
                 <ul>
                     <!-- Dashboard -->
                     <li>
-                        <a href="index.html">
+                        <a href="{{base_url('soldier/index')}}.html">
                             <i class="fa fa-user-secret t#ff561c"></i> ویرایش پروفایل
                         </a>
                     </li>
-
                     <li>
-                        <a href="{{base_url('soldier/absent')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-user-times " style="color: rgba(31,255,243,0.75)"></i>مرخصی همکاران
+                        <a href="{{base_url('soldier/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('soldier/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{base_url('soldier/vacations')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-calendar-times-o t#ff561c"></i>مرخصی ها
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{base_url('soldier/mission')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-plane " style="color: rgba(255,155,45,0.75)"></i> ماموریت
-                        </a>
-                    </li>
-
-                    <li><a href="{{base_url('soldier/overtime')}}.html" class="b%0=5"><i style="color: rgba(255,74,178,0.75)" class="fa fa-hourglass-half"></i> اضافه خدمت</a></li>
-                    <li>
-                        <a href="{{base_url('soldier/delay')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-clock-o " style="color: rgba(255,122,0,0.75)"></i> تاخیر
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a href="{{$root}}" class="b#333 b%0=05 waves-effect">
-                            <i class="fa fa-power-off fa-2x t#ff561c"></i>خروج
+                        <a href="{{base_url('login')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-sign-out" style="color: red"></i>خروج
                         </a>
                     </li>
 
@@ -688,6 +693,7 @@
 
     });
 </script>
+
 @yield('js')
 </body>
 

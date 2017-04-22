@@ -84,27 +84,55 @@
 
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
-                                <li>
-                                    <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                        <i class="fa fa-bolt" ></i>ثبت رویداد
-                                    </a>
-                                </li>
-                                <li><a href="{{base_url('cadre/absent')}}.html" class="b%0=5"><i class="fa fa-user-times"></i>افراد غیر حاضر در مجموعه</a></li>
-                                <li><a href="{{base_url('cadre/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
-                                <li><a href="{{base_url('cadre/vacations_list')}}.html" class="b%0=5"><i class="fa fa-calendar-times-o"></i>مرخصی ها</a></li>
-                                <li><a href="{{base_url('cadre/vacations')}}.html" class="b%0=5"><i class="fa fa-bed"></i>ثبت مرخصی</a></li>
-                                <li><a href="{{base_url('cadre/overtime')}}.html" class="b%0=5"><i class="fa fa-hourglass-half"></i>ثبت اضافه خدمت</a></li>
+
+                                    <!-- Dashboard -->
+                                    <li>
+                                        <a href="{{base_url('cadre/index')}}.html">
+                                            <i class="fa fa-user-secret t#ff561c"></i> ویرایش پروفایل
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{base_url('cadre/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{base_url('cadre/register')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                            <i class="fa fa-user-plus" style="color:rgba(195,90,71,0.75)"></i> ثبت نیرو
+                                        </a>
+                                    </li>
+
+
+
                             </ul>
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
 
-                                <li><a href="{{base_url('cadre/overtime_list')}}.html" class="b%0=5"><i class="fa fa-hourglass-1"></i>لیست اضافه خدمت</a></li>
-                                <li><a href="{{base_url('cadre/mission')}}.html" class="b%0=5"><i class="fa fa-plane"></i>ثبت ماموریت</a></li>
-                                <li><a href="{{base_url('cadre/mission_list')}}.html" class="b%0=5"><i class="fa fa-eye"></i>لیست ماموریت ها</a></li>
-                                <li><a href="{{base_url('cadre/delay')}}.html" class="b%0=5"><i class="fa fa-clock-o"></i>ثبت تاخیر</a></li>
-                                <li><a href="{{base_url('cadre/delay_list')}}.html" class="b%0=5"><i class="fa fa-exclamation-triangle"></i> لیست تاخیر ها</a></li>
-                                <li><a href="{{$root}}" class="b%0=5"><i class="fa fa-power-off"></i>خروج امن</a></li>
+                                <li>
+                                    <a href="{{base_url('cadre/units')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-users" style="color: rgba(195,30,10,0.75)"></i> مدیریت نیرو ها
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{base_url('cadre/event_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-road" style="color: rgba(25,57,195,0.75)"></i> مدیریت رویداد نوع یک
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{base_url('cadre/event2_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-calendar" style="color:rgba(0,195,184,0.75)"></i> مدیریت رویداد نوع دو
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{base_url('login')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-sign-out" style="color: red"></i>خروج
+                                    </a>
+                                </li>
                             </ul>
 
 
@@ -560,71 +588,43 @@
                 <ul>
                     <!-- Dashboard -->
                     <li>
-                        <a href="index.html">
+                        <a href="{{base_url('cadre/index')}}.html">
                             <i class="fa fa-user-secret t#ff561c"></i> ویرایش پروفایل
                         </a>
                     </li>
                     <li>
                         <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-bolt" style="color: rgba(26,255,81,0.75)"></i>ثبت رویداد
+                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
                         </a>
                     </li>
                     <li>
-                        <a href="{{base_url('cadre/delay_event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-database" style="color: red"></i>ثبت خلا و اضافه خدمت ناشی از خلا
+                        <a href="{{base_url('cadre/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('cadre/register')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-user-plus" style="color:rgba(195,90,71,0.75)"></i> ثبت نیرو
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('cadre/units')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-users" style="color: rgba(195,30,10,0.75)"></i> مدیریت نیرو ها
                         </a>
                     </li>
                     <li>
                         <a href="{{base_url('cadre/event_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-eye" style="color: rgba(26,255,81,0.75)"></i>مشاهده رویداد
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{base_url('cadre/absent')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-user-times t#777"></i>افراد غیر حاضر
+                            <i class="fa fa-road" style="color: rgba(25,57,195,0.75)"></i> مدیریت رویداد نوع یک
                         </a>
                     </li>
                     <li>
-                        <a href="{{base_url('cadre/vacations')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-bed t#46c35f"></i>ثبت مرخصی
+                        <a href="{{base_url('cadre/event2_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-calendar" style="color:rgba(0,195,184,0.75)"></i> مدیریت رویداد نوع دو
                         </a>
                     </li>
                     <li>
-                        <a href="{{base_url('cadre/vacations_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-calendar-times-o t#ff561c"></i>مرخصی ها
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{base_url('cadre/mission')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-plane " style="color: rgba(255,155,45,0.75)"></i>ثبت ماموریت
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{base_url('cadre/mission_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-eye t#46c35f"></i>مشاهده ماموریت ها
-                        </a>
-                    </li>
-                    <li><a href="{{base_url('cadre/overtime')}}.html" class="b%0=5"><i style="color: red" class="fa fa-hourglass-half"></i>ثبت اضافه خدمت</a></li>
-                    <li><a href="{{base_url('cadre/overtime_list')}}.html" class="b%0=5"><i style="color: darkgoldenrod" class="fa fa fa-hourglass-1"></i>لیست اضافه خدمت</a></li>
-                    <li>
-                        <a href="{{base_url('cadre/delay')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-clock-o " style="color: red"></i>ثبت تاخیر
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{base_url('cadre/delay_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-exclamation-triangle " style="color: orangered"></i>تاخیر ها
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{base_url('cadre/users')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-pencil-square t#ac6bec"></i>مدیریت و ویرایش کاربران
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{$root}}" class="b#333 b%0=05 waves-effect">
-                            <i class="fa fa-power-off fa-2x t#ff561c"></i>خروج
+                        <a href="{{base_url('login')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-sign-out" style="color: red"></i>خروج
                         </a>
                     </li>
 
@@ -730,15 +730,7 @@
 
     });
 </script>
-<style>
-    .page-footer {
-        margin-top: 62px;
-        padding: 15px;
-    }
-    .main_content{
-        background-color: rgb(241, 240, 240) !important;
-    }
-</style>
+
 @yield('js')
 </body>
 

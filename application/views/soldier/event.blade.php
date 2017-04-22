@@ -1,19 +1,19 @@
-@extends('cadre.mastercadre')
+@extends('soldier.mastersoldier')
 @section('css')
     <link rel="stylesheet" href="{{$root}}public/css/jspc-gray.css">
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">ثبت رویداد نوع دو</h2>
+        <h2 class="page-title">ثبت رویداد نوع یک</h2>
         <ol class="breadcrumb">
-            <li><a href="{{base_url('cadre')}}.html">پنل کادر</a></li>
-            <li><span>ثبت رویداد نوع دو</span></li>
+            <li><a href="{{base_url('cadre')}}.html">پنل  وظیفه</a></li>
+            <li><span>ثبت رویداد نوع یک</span></li>
         </ol>
     </div>
     <div class="panel">
 
         <div class="panel-heading b#c6f9ff ">
-            <i class="fa fa-pencil-square-o"></i>ثبت رویداد نوع دو
+            <i class="fa fa-flash sort-hand"></i>ثبت رویداد نوع یک
             <div class="pan-btn min"></div>
         </div>
         <div class="panel-body ">
@@ -27,10 +27,10 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">نوع رویداد</label>
                 <section  class="col-sm-4">
-                    <select id="event" name="status" class="form-control">
-                        <option value="0">مرخصی ساعتی</option>
-                        <option value="6">ماموریت</option>
-                        <option value="7">تاخیر</option>
+                    <select id="event" name="stat" class="form-control">
+                        <option value="0">خلا و اضافه خدمت ناشی از خلا</option>
+                        <option value="1">تشویق</option>
+                        <option value="2">تنبیه</option>
                     </select>
                 </section>
                 <label class="control-label col-sm-2">شناسه نیرو</label>
@@ -42,22 +42,18 @@
                     </div>
                 </section>
             </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">شماره</label>
-                    <section class="col-sm-4">
-                       <input class="form-control" type="number" name="number" required>
-                    </section>
-                    <div id="target" style="display: none">
-                        <label class="control-label col-sm-2">نوع ماموریت </label>
-                        <section  class="col-sm-4">
-                            <select class="form-control" name="type">
-                                <option >ساعتی </option>
-                                <option >روزانه </option>
-                            </select>
-                        </section>
-                    </div>
-                </div>
             <div class="form-group">
+                <label class="control-label col-sm-2">شماره</label>
+                <section class="col-sm-3">
+                    <input class="form-control" type="number" name="number" required>
+                </section>
+                <label class="control-label col-sm-4">مواد استنادی آیین نامه انضباطی یا قانون </label>
+                <div class="col-sm-3">
+                    <input class="form-control" rows="3" name="rule" required>
+                </div>
+
+            </div>
+            <div class="form-group delay ">
                 <label class="control-label col-sm-2">تاریخ شروع</label>
                 <section class="col-sm-4">
                     <input  readonly placeholder="تاریخ " type="text" id="pcal1" class="pdate full-width has-padding has-border" name="times" required>
@@ -68,33 +64,29 @@
                 </section>
 
             </div>
-            <div class="form-group delayoff" >
-                <label class="control-label col-sm-2">ساعت شروع</label>
-                <section class="col-sm-4">
-                    <input type="time" value="12:01"  name="htimes" class="form-control" required>
-                </section>
-
-                <label class="control-label col-sm-2">ساعت پایان</label>
-                <section class="col-sm-4">
-                    <input type="time" value="12:01"  class="form-control" name="htimef" required>
-                </section>
+            <div class="form-group">
+                <div class="delay" >
+                    <label  class="control-label col-sm-2">مدت زمان تاخیر</label>
+                    <div class="col-sm-4">
+                        <input required type="number" name="delay" class="form-control" value="0">
+                    </div>
+                </div>
+                <label  class="control-label col-sm-3">میزان تشویقی/ تنبیهی(روز)</label>
+                <div class="col-sm-3">
+                    <input required name="day" class="form-control" type="number">
+                </div>
             </div>
-           <div class="form-group">
-             <div class="clock" >
-                 <label  class="control-label col-sm-2">مدت زمان (روز)</label>
-                 <div class="col-sm-4">
-                     <input required type="number" name="day" class="form-control">
-                 </div>
-             </div>
-               <label  class="control-label col-sm-2">مدت زمان (ساعت)</label>
-               <div class="col-sm-4">
-                   <input required name="hour" class="form-control" type="number">
-               </div>
+           <div class="form-group" id="action" style="display: none">
+               <label class="control-label col-sm-2">نوع عمل </label>
+               <section  class="col-sm-10">
+                   <textarea class="form-control" type="text" name="action" required>-</textarea>
+               </section>
+
            </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">توضیحات</label>
                 <section class="col-sm-10">
-                   <textarea required name="description" class="form-control" rows="5"></textarea>
+                    <textarea required name="text" class="form-control" rows="5"></textarea>
                 </section>
             </div>
             <div class="form-group ">
@@ -168,21 +160,22 @@
             initialDate: '1396/02/01'
         } );
         $(document).ready(function () {
-           $('.userid').click(function () {
-              var userid = $(this).val();
-              $('#userid').val(userid);
-              $('#nameid').val(userid);
-           });
-           ///////
+            $('.userid').click(function () {
+                var userid = $(this).val();
+                $('#userid').val(userid);
+                $('#nameid').val(userid);
+            });
+            ///////
             $('#event').change(function () {
-               var event =$(this).val();
-               if(event == 6 ){
-                   $('#target').show();
-               }else{
-                   $('#target').hide();
-                   $('.delayoff').show();
-               }
-               /////
+                var event =$(this).val();
+                if(event != 0 ){
+                    $('#action').show();
+                    $('.delay').hide();
+                }else{
+                    $('#action').hide();
+                    $('.delay').show();
+                }
+                /////
                 if(event == 7){
                     $('.delayoff').hide();
                 }

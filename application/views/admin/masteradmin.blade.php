@@ -84,7 +84,7 @@
 
                             <ul class="col-sm-4 icon">
                                 <li><h4>پنل مدیریت پادگان</h4></li>
-                                <li><a href="#" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
+                                <li><a href="{{base_url('admin/index')}}.html" class="b%0=5"><i class="fa fa-user"></i> ویرایش پروفایل</a></li>
 
                                 <li><a href="{{base_url('admin/users')}}.html" class="b%0=5"><i class="fa fa-pencil"></i>مدیریت و ویرایش کاربران</a></li>
                             </ul>
@@ -547,7 +547,7 @@
                 <ul>
                     <!-- Dashboard -->
                     <li>
-                        <a href="index.html">
+                        <a href="{{base_url('admin/index')}}.html">
                             <i class="fa fa-users t#ff561c"></i> ویرایش پروفایل
                         </a>
                     </li>

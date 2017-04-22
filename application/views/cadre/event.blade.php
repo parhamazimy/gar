@@ -13,7 +13,7 @@
     <div class="panel">
 
         <div class="panel-heading b#c6f9ff ">
-            <i class="fa fa-bed sort-hand"></i>ثبت رویداد نوع یک
+            <i class="fa fa-flash sort-hand"></i>ثبت رویداد نوع یک
             <div class="pan-btn min"></div>
         </div>
         <div class="panel-body ">

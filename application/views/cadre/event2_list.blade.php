@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">مرخصی ها</h2>
+        <h2 class="page-title">مدیریت رویداد های نوع دو</h2>
         <ol class="breadcrumb">
             <li><a href="{{base_url('admin/index')}}.html">پنل کادر</a></li>
-            <li><span>مرخصی ها</span></li>
+            <li><span>مدیریت رویداد های نوع دو</span></li>
         </ol>
     </div>
     <div class="panel" id="basic">
         <div class="panel-heading b#ffe7ff">
-            <i class="fa fa-bed sort-hand"></i>
-            مرخصی ها
+            <i class="fa fa-calendar sort-hand"></i>
+            مدیریت رویداد های نوع دو
             <div class="pan-btn expand min"></div>
         </div>
         <div class="panel-body">

@@ -13,7 +13,7 @@
     <div class="panel" id="basic">
         <div class="panel-heading b#ffe7ff">
             <i class="fa fa-users sort-hand"></i>
-            کاربران
+            نیرو ها
             <div class="pan-btn expand min"></div>
         </div>
         <div class="panel-body">
