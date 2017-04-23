@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">مرخصی ها</h2>
+        <h2 class="page-title">رویداد های روزانه</h2>
         <ol class="breadcrumb">
             <li><a href="{{base_url('admin/index')}}.html">پنل کادر</a></li>
-            <li><span>مرخصی ها</span></li>
+            <li><span>رویداد های روزانه</span></li>
         </ol>
     </div>
     <div class="panel" id="basic">
         <div class="panel-heading b#ffe7ff">
             <i class="fa fa-bed sort-hand"></i>
-            مرخصی ها
+            رویداد های روزانه
             <div class="pan-btn expand min"></div>
         </div>
         <div class="panel-body">
@@ -60,10 +60,10 @@
                     <tr>
                         <td>{{$i}}</td>
                         <td>
-                            @if($vacation->condition == 0)
+                            @if($vacation->condition == '0')
                                 مرخصی بلند مدت
                             @else
-                               {{$vacation->condition}}
+                                 مرخصی   {{$vacation->condition}}
                             @endif
                         </td>
                         <td>{{$vacation->number}}</td>
@@ -108,7 +108,7 @@
     {!! form_close() !!}
     {!! form_open('admin/edit','style="display: none" id="edit" ') !!}
     {!! form_close() !!}
-    {!! form_open('printer/vacation','style="display: none" id="print" ') !!}
+    {!! form_open('printer/leave','style="display: none" id="print" ') !!}
     {!! form_close() !!}
 @endsection
 @section('js')

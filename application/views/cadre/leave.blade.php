@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">ثبت مرخصی</h2>
+        <h2 class="page-title">ثبت رویداد روزانه</h2>
         <ol class="breadcrumb">
             <li><a href="{{base_url('cadre')}}.html">پنل کادر</a></li>
-            <li><span>ثبت رمرخصی</span></li>
+            <li><span>ثبت رویداد روزانه</span></li>
         </ol>
     </div>
     <div class="panel">
 
         <div class="panel-heading b#c6f9ff ">
-            <i class="fa fa-bed sort-hand"></i>ثبت مرخصی
+            <i class="fa fa-bed sort-hand"></i>ثبت رویداد روزانه
             <div class="pan-btn min"></div>
         </div>
         <div class="panel-body ">

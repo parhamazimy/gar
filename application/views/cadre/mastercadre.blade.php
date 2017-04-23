@@ -93,12 +93,12 @@
                                     </li>
                                     <li>
                                         <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت تنبیهات و تشویقات
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{base_url('cadre/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویدادهای ساعتی
                                         </a>
                                     </li>
                                     <li>
@@ -106,6 +106,12 @@
                                             <i class="fa fa-user-plus" style="color:rgba(195,90,71,0.75)"></i> ثبت نیرو
                                         </a>
                                     </li>
+
+                                <li>
+                                    <a href="{{base_url('cadre/leave')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-database" style="color:orange"></i> ثبت رویداد های روزانه
+                                    </a>
+                                </li>
 
 
 
@@ -120,12 +126,17 @@
                                 </li>
                                 <li>
                                     <a href="{{base_url('cadre/event_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                        <i class="fa fa-road" style="color: rgba(25,57,195,0.75)"></i> مدیریت رویداد نوع یک
+                                        <i class="fa fa-road" style="color: rgba(25,57,195,0.75)"></i> مدیریت تنبیهات و تشویقات
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{base_url('cadre/event2_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                        <i class="fa fa-calendar" style="color:rgba(0,195,184,0.75)"></i> مدیریت رویداد نوع دو
+                                        <i class="fa fa-calendar" style="color:rgba(0,195,184,0.75)"></i> مدیریت رویدادهای ساعتی
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{base_url('cadre/leave_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-archive" style="color: green;"></i> مدیریت رویداد های روزانه
                                     </a>
                                 </li>
                                 <li>
@@ -594,12 +605,17 @@
                     </li>
                     <li>
                         <a href="{{base_url('cadre/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت تشویقات و تنبیهات
                         </a>
                     </li>
                     <li>
                         <a href="{{base_url('cadre/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد های ساعتی
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('cadre/leave')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-database" style="color:orange"></i> ثبت رویداد های روزانه
                         </a>
                     </li>
                     <li>
@@ -614,14 +630,20 @@
                     </li>
                     <li>
                         <a href="{{base_url('cadre/event_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-road" style="color: rgba(25,57,195,0.75)"></i> مدیریت رویداد نوع یک
+                            <i class="fa fa-road" style="color: rgba(25,57,195,0.75)"></i> مدیریت تنبیهات و تشویقات
                         </a>
                     </li>
                     <li>
                         <a href="{{base_url('cadre/event2_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-calendar" style="color:rgba(0,195,184,0.75)"></i> مدیریت رویداد نوع دو
+                            <i class="fa fa-calendar" style="color:rgba(0,195,184,0.75)"></i> مدیریت رویداد ساعتی
                         </a>
                     </li>
+                    <li>
+                        <a href="{{base_url('cadre/leave_list')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-archive" style="color: green;"></i> مدیریت رویداد های روزانه
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{base_url('login')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
                             <i class="fa fa-sign-out" style="color: red"></i>خروج

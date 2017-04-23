@@ -2,148 +2,282 @@
 <html lang="fa_IR" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
 <style>
-  .book{
-      width:21cm; height:29.7cm;
-      border:1px solid black;
-      position: relative;
-      margin: 0px auto;
-  }
+    @page {
+        /* dimensions for the whole page */
+        size: A5;
+        margin: 0;
+    }
+
+    html {
+        /* off-white, so body edge is visible in browser */
+        height: 210mm;
+        width: 148.5mm;
+        margin: 0;
+    }
+
+    body {
+        /* A5 dimensions */
+        font-family: "B Lotus" !important;
+        height: 210mm;
+        width: 148.5mm;
+        font-size: 1.1em;
+
+        margin: 0;
+        padding: 1mm;
+    }
+    .page{
+        margin: 0px auto;
+        border: 0.5mm solid black;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .ln{
+        border-bottom: 0.5mm solid black;
+    }
     .header{
-        border-bottom: 1px solid black;
-        text-align: right;
-    }
-    .header h1{
-        margin-right: 2cm;
-    }
-    .header i{
-        margin-top: 0cm;
-        float: left;
-    }
-    .header i span{
-        margin-left: 1cm;
-        float: left;
+        position: relative;
+        display: block;
+        text-align: left;
     }
     .title{
         text-align: center;
-        border-bottom: 1px solid black;
+        font-size: 22px;
     }
-    .contain,.footer{
-        padding: 1cm;
-        font-size: 18px;
+    .s1{
+        padding: 4mm 3mm;
     }
-    span,label{
-        margin-bottom: 0.5cm;
-    }
-    .contain span{
+    input,label{
         display: inline-block;
-        width: 31.33%;
-        text-align: center
-    }
-    label{
-        display: inline-block;
-        width: 25%;
+        width: 22%;
+        border: none;
         text-align: center;
     }
-  input{
-      display: inline-block;
-      width: 23%;
-      text-align: center;
-      border: none;
-      font-weight: bolder;
-  }
-    .footer{
-        border-top: 1px dashed black;
+    .b{
+        width: 35% !important;
     }
-    i{
-        margin-top: 1cm;
+    .s{
+        width: 13% !important;
+    }
+    .sm{
+        width: 5% !important;
+    }
+    p{
+        padding: 0mm;
+        margin: 0mm 4mm 0mm 0mm;
+        font-weight: bolder;
+        font-size: 1.1em;
+
+    }
+    .r{
+        margin: 2mm 15mm;
+        text-align: center;
+        float: right;
+    }
+    .l{
+        margin: 2mm 15mm;
+        text-align: center;
         float: left;
     }
-
+    .r span{
+        display: block;
+    }
+    .l span{
+        display: block;
+    }
+    textarea{
+        border: none;
+        width: 90%;
+        padding: 2mm 5mm;
+        min-height: 11mm;
+        max-height: 11mm;
+    }
+    .c{
+        float: none;
+        display: inline-block;
+        margin: 2mm 9mm;
+    }
+    .c span{
+        display: block;
+    }
+    .bb{
+        width: 70% !important;
+    }
+    .dot{
+        border-bottom: 1mm dotted black;
+    }
 
 </style>
-<div class="book">
-    <div class="header">
-       <i>
-           <span>شماره :<?= $print->id?></span><br>
-           <span>تاریخ :<?=mds_date('y/m/d') ?></span>
-       </i>
-        <h1>بسمه تعالی</h1>
+<section class="page">
+    <div class="ln header">
+        <span>شماره : <?= $print->number ?></span><br>
+        <span>تاریخ : <?= mds_date('Y/m/d',$print->inserttime) ?></span>
     </div>
-    <div class="title">
-        <h2>برگه ماموریت</h2>
-    </div>
-    <div class="contain">
-        <label >بدین وسیله برادر وظیفه </label>
-        <input type="text" value="<?= $print->name . $print->family  ?>">
-        <label >فرزند </label>
-        <input type="text" value="<?= $print->father  ?> ">
+    <div class="title ln">برگه مرخصی</div>
+    <div class="s1 dot">
 
-        <label >دارای شماره شناسنامه</label>
-        <input type="text" value="<?= $print->birthcertificate   ?>">
-        <label >و شماره ملی</label>
-        <input type="text" value="<?= $print->nationalcode   ?> ">
+        <label class="b">بدین وسیله برادر وظیفه :</label>
+        <input  value="<?= $print->name . ' '. $print->family ?>">
+        <label class="s">فرزند :</label>
+        <input class="s" value="<?= $print->father ?>">
+        <!--  line-->
+        <label class="b">دارای شماره شناسنامه :</label>
+        <input value="<?= $print->birthcertificate ?>">
+        <label class="s"> شماره ملی :</label>
+        <input value="<?= $print->nationalcode ?>">
+        <!--  line-->
+        <label class="b">تاریخ اعزام به خدمت :</label>
+        <input class="s" value="<?= mds_date('y/m/d',$print->timedispatch) ?>">
+        <label class="b">تاریخ ورود به مجموعه :</label>
+        <input class="s" value="<?= mds_date('y/m/d',$print->timearrival) ?>">
+        <!--  line-->
+        <label>با درجه :</label>
+        <input value="<?= $print->rating ?>">
+        <label>جمعی :</label>
+        <input value="<?= '-' ?>مجاز است">
+        <!--  line-->
+        <label>از ساعت :</label>
+        <input value="<?= mds_date('h:i',$print->times) ?>">
+        <label>تاریخ :</label>
+        <input value="<?= mds_date('y/m/d',$print->times) ?>">
+        <!--  line-->
+        <label>تا ساعت :</label>
+        <input value="<?= mds_date('h:i',$print->timef) ?>">
+        <label>تاریخ :</label>
+        <input value="<?= mds_date('y/m/d',$print->timef)?>">
+        <!--  line-->
+        <label class="s">به مدت :</label>
+        <input class="sm" value="<?= $print->day ?>">
+        <label class="sm" >روز</label>
+        <input class="sm" value="<?= $print->hour ?>">
+        <label class="b" >ساعت به منظور انجام ماموریت</label>
+        <input class="s" value="<?= $print->type ?>">
+        <!--  line-->
+        <label>از دژبانی خارج گردد.</label>
+        <br>
+        <!--  line-->
+        <label class="b">علت اعزام به ماموریت:</label>
+        <textarea><?=$print->description?></textarea>
+        <!--  line-->
+        <i class="r">
+            <span>مهر و امضای</span>
+            <span>مسئول قسمت </span>
+        </i>
+        <i class="c">
+            <span>مهر و امضای</span>
+            <span> گردان قرارگاه</span>
+        </i>
 
-        <label >با درجه </label>
-        <input type="text" value="<?= $print->rating   ?>">
-        <label >مجاز است </label>
-        <input type="text" value="">
-
-        <label >از ساعت</label>
-        <input type="text" value="<?= mds_date('h',$print->times)  ?>">
-        <label >تاریخ</label>
-        <input type="text" value="<?= mds_date('y/m/d',$print->times)  ?>">
-
-        <label >تا ساعت</label>
-        <input type="text" value="<?= mds_date('h',$print->timef)  ?>">
-        <label >تا تاریخ</label>
-        <input type="text" value="<?= mds_date('y/m/d',$print->timef)  ?>">
-
-        <label >به مدت</label>
-        <input type="text" value="<?php echo round(($print->timef - $print->times)/(60*60*60)) ?>">
-        <label >روز</label>
-        <input type="text" value="از دژبانی خارج گردد.">
-
-        <label style="display: block" >علت اعزام به ماموریت :</label>
-        <textarea style="display: block;width: 100%;border: none;min-height: 5cm">
-<?= $print->description   ?>
-        </textarea>
-        <span>مهر و امضای <br> مسئول قسمت</span>
-        <span>مهر و امضای <br> مسئول قسمت</span>
-        <span>مهر و امضای <br> مسئول قسمت</span>
-
-    </div>
-    <div class="footer">
-        <label >بدین وسیله برادر وظیفه </label>
-        <input type="text" value="<?= $print->name . $print->family  ?>">
-        <label >مجاز است </label>
-        <input type="text" value=" ">
-
-        <label >از ساعت</label>
-        <input type="text" value="<?= mds_date('h',$print->times)  ?>">
-        <label >تاریخ</label>
-        <input type="text" value="<?= mds_date('y/m/d',$print->times)  ?>">
-
-        <label >تا ساعت</label>
-        <input type="text" value="<?= mds_date('h',$print->timef)  ?>">
-        <label >تا تاریخ</label>
-        <input type="text" value="<?= mds_date('y/m/d',$print->times)  ?>">
-
-        <label >به مدت</label>
-        <input type="text" value="<?php echo round(($print->timef - $print->times)/(60*60*60)) ?>">
-        <label >روز</label>
-        <input type="text" value="از دژبانی خارج گردد.">
-        <i>مهر و امضای <br>نیروی انسانی</i>
+        <i class="l">
+            <span>مهر و امضای</span>
+            <span>نیروی انسانی </span>
+        </i>
 
     </div>
+    <div class="s1">
+        <label class="b">بدین وسیله برادر وظیفه :</label>
+        <input class="b" value="<?= $print->name . ' '. $print->family ?>">
+        <label>مجاز است</label>
+
+        <label>از ساعت :</label>
+        <input value="<?= mds_date('h:i',$print->times) ?>">
+        <label>تاریخ :</label>
+        <input value="<?= mds_date('y/m/d',$print->times) ?>">
+        <!--  line-->
+        <label>تا ساعت :</label>
+        <input value="<?= mds_date('h:i',$print->timef) ?>">
+        <label>تاریخ :</label>
+        <input value="<?= mds_date('y/m/d',$print->timef)?>">
+        <!--  line-->
+        <label class="s">به مدت :</label>
+        <input class="sm" value="<?= $print->day ?>">
+        <label class="sm">روز</label>
+        <input class="sm" value="<?= $print->hour ?>">
+        <label class="b">ساعت به منظور انجام ماموریت</label>
+        <input class="s" value="<?= $print->type ?>">
+        <label>از دژبانی خارج گردد.</label>
+        <!--  line-->
+
+        <br>
+        <i class="l">
+            <span>مهر و امضای</span>
+            <span>نیروی انسانی </span>
+        </i>
+
+    </div>
 
 
-</div>
+</section>
+
+
+
 <script>
-    window.print();
+//    window.print();
 </script>
 </body>
 </html>
+<?php
+function jay($stat){
+    if($stat == 2 or $stat == 1 ){
+        return 'گردان';
+    }else{
+        return 'نیروی انسانی';
+    }
+}
+function mas($stat){
+    if($stat == 2 or $stat == 4 ){
+        echo 'کادر';
+    }else{
+        echo 'وظیفه';
+    }
+}
+function maried($rat){
+    switch ($rat) {
+        case "1":
+            return "متاهل  ";
+            break;
+
+        default:
+            return "مجرد";
+    }
+}
+function health($rat){
+    switch ($rat) {
+        case "1":
+            return "سالم  ";
+            break;
+
+        default:
+            return "معاف از رزم";
+    }
+}
+function boomi($rat){
+    switch ($rat) {
+        case "1":
+            return "بومی  ";
+            break;
+
+        default:
+            return "غیر بومی";
+    }
+}
+function delaystat($rat){
+    switch ($rat) {
+        case "0":
+            return "تنبیه  ";
+            break;
+        case "1":
+            return "تنبیه  ";
+            break;
+        case "2":
+            return "خلا و اضافه خدمت ناشی از خلا  ";
+            break;
+
+        default:
+            return "غیر بومی";
+    }
+}
+?>

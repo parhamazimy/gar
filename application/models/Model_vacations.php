@@ -25,6 +25,15 @@ class model_vacations extends CI_Model
         return  $this->db->get($this->table)->result();
     }
 
+    function find($id){
+        $this->db->where('`vacations`.`id`',$id);
+        $this->db->select(' * ,vacations.id AS vacationsid,,vacations.description AS description');
+        $this->db->join('units', 'units.id = vacations.unitid');
+        return   $this->db->get($this->table)->row();
+
+    }
+    //
+
 
 
     public function findwhere($column,$val)

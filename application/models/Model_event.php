@@ -40,15 +40,16 @@ class model_event extends CI_Model
     }
 
 
-
-    //--------------\\
-    function finder($id){
-        $this->db->where('`event`.`id`',$id);
-        $this->db->select(' * ,event.id AS vacationsid');
+    function find($id){
+        $this->db->where('`event`.`eventid`',$id);
+        $this->db->select(' * ,users.name AS cadrename , users.family AS cadrefamily , users.access AS access , users.rating AS cadrerating  ');
         $this->db->join('users', 'users.id = event.userid');
+        $this->db->join('units', 'units.id = event.unitid');
         return  $this->db->get($this->table)->row();
 
     }
+    //--------------\\
+
 
 
 

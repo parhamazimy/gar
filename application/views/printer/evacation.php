@@ -106,6 +106,17 @@
     .dot{
         border-bottom: 1mm dotted black;
     }
+    .mm{
+        display: inline-block;
+        width: 21%;
+        margin-top: 2mm;
+        margin-right: 4mm;
+        text-align: center;
+    }
+    .mm span{
+        text-align: center;
+        display: block;
+    }
 
 </style>
 <section class="page">
@@ -147,22 +158,26 @@
         <input value="<?= mds_date('y/m/d',$print->timef)?>">
         <!--  line-->
         <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb" >ساعت از مرخصی ساعتی استفاده نماید.</label>
+        <input class="s" value="<?= $print->time ?>">
+        <label class="bb" >روز از مرخصی <?=$print->condition?> استفاده نماید.</label>
         <!--  line-->
         <label class="b">علت درخواست مرخصی:</label>
-        <textarea><?=$print->description?></textarea>
+        <textarea><?=$print->text?></textarea>
         <!--  line-->
-        <i class="r">
+        <i class="mm">
+            <span>مهر و امضای</span>
+            <span>بهدای </span>
+        </i>
+        <i class="mm">
             <span>مهر و امضای</span>
             <span>مسئول قسمت </span>
         </i>
-        <i class="c">
+        <i class="mm">
             <span>مهر و امضای</span>
             <span> گردان قرارگاه</span>
         </i>
 
-        <i class="l">
+        <i class="mm">
             <span>مهر و امضای</span>
             <span>نیروی انسانی </span>
         </i>
@@ -184,8 +199,8 @@
         <input value="<?= mds_date('y/m/d',$print->timef)?>">
         <!--  line-->
         <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb">ساعت از مرخصی ساعتی استفاده نماید.</label>
+        <input class="s" value="<?= $print->time ?>">
+        <label class="bb">روز از مرخصی <?= $print->condition ?> استفاده نماید.</label>
         <br>
         <i class="l">
             <span>مهر و امضای</span>

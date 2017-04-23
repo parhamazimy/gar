@@ -93,11 +93,9 @@
                                 </li>
                                 <li>
                                     <a href="{{base_url('soldier/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                        <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                                        <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت تنبیهات و تشویقات
                                     </a>
                                 </li>
-
-
 
 
                             </ul>
@@ -105,7 +103,12 @@
                                 <li><h4>پنل مدیریت پادگان</h4></li>
                                 <li>
                                     <a href="{{base_url('soldier/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                                        <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                                        <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد های ساعتی
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{base_url('soldier/leave')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                                        <i class="fa fa-database" style="color:orange"></i> ثبت رویداد های روزانه
                                     </a>
                                 </li>
 
@@ -576,12 +579,17 @@
                     </li>
                     <li>
                         <a href="{{base_url('soldier/event')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت رویداد نوع اول
+                            <i class="fa fa-bolt" style="color: rgba(195,183,22,0.75)"></i> ثبت تنبیهات و تشویقات
                         </a>
                     </li>
                     <li>
                         <a href="{{base_url('soldier/event2')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
-                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد نوع دوم
+                            <i class="fa fa-pencil-square-o" style="color: rgba(26,255,81,0.75)"></i> ثبت رویداد ساعتی
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{base_url('soldier/leave')}}.html" class="b%0=5" style="transition: all 0.3s ease 0s; background-color: rgba(255, 255, 255, 0);">
+                            <i class="fa fa-database" style="color:orange"></i> ثبت رویداد های روزانه
                         </a>
                     </li>
 

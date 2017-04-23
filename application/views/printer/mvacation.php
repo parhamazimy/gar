@@ -147,11 +147,11 @@
         <input value="<?= mds_date('y/m/d',$print->timef)?>">
         <!--  line-->
         <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb" >ساعت از مرخصی ساعتی استفاده نماید.</label>
+        <input class="s" value="<?= $print->time ?>">
+        <label class="bb" >روز از مرخصی <?=$print->condition?> استفاده نماید.</label>
         <!--  line-->
         <label class="b">علت درخواست مرخصی:</label>
-        <textarea><?=$print->description?></textarea>
+        <textarea><?=$print->text?></textarea>
         <!--  line-->
         <i class="r">
             <span>مهر و امضای</span>
@@ -184,8 +184,8 @@
         <input value="<?= mds_date('y/m/d',$print->timef)?>">
         <!--  line-->
         <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb">ساعت از مرخصی ساعتی استفاده نماید.</label>
+        <input class="s" value="<?= $print->time ?>">
+        <label class="bb">روز از مرخصی <?= $print->condition ?> استفاده نماید.</label>
         <br>
         <i class="l">
             <span>مهر و امضای</span>

@@ -48,7 +48,7 @@
         font-size: 22px;
     }
     .s1{
-        padding: 4mm 3mm;
+        padding: 0mm 3mm;
     }
     input,label{
         display: inline-block;
@@ -87,9 +87,8 @@
     }
     textarea{
         border: none;
-        width: 90%;
-        padding: 2mm 5mm;
-        min-height: 25mm;
+        width: 100%;
+        min-height: 9mm;
         max-height: 10mm;
     }
     .c{
@@ -100,12 +99,6 @@
     .c span{
         display: block;
     }
-    .bb{
-        width: 70% !important;
-    }
-    .dot{
-        border-bottom: 1mm dotted black;
-    }
 
 </style>
 <section class="page">
@@ -113,87 +106,95 @@
         <span>شماره : <?= $print->number ?></span><br>
         <span>تاریخ : <?= mds_date('Y/m/d',$print->inserttime) ?></span>
     </div>
-    <div class="title ln">برگه مرخصی</div>
-    <div class="s1 dot">
+    <div class="title ln">خلا و اضافه خدمت ناشی از خلا</div>
+    <div class="s1 ln">
+        <p  >مشخصات مقام پیشنهاد دهنده :</p>
 
-        <label class="b">بدین وسیله برادر وظیفه :</label>
-        <input  value="<?= $print->name . ' '. $print->family ?>">
-        <label class="s">فرزند :</label>
-        <input class="s" value="<?= $print->father ?>">
+        <label>نام و نام خانوادگی :</label>
+        <input value="<?= $print->cadrename . ' '. $print->cadrefamily ?>">
+        <label>مسئولیت :</label>
+        <input value="<?= mas($print->access) ?>">
         <!--  line-->
-        <label class="b">دارای شماره شناسنامه :</label>
-        <input value="<?= $print->birthcertificate ?>">
-        <label class="s"> شماره ملی :</label>
-        <input value="<?= $print->nationalcode ?>">
+        <label>درجه یا رتبه</label>
+        <input value="<?= $print->cadrerating ?>">
+        <label>جایگاه :</label>
+        <input value="<?= jay($print->access) ?>">
         <!--  line-->
-        <label class="b">تاریخ اعزام به خدمت :</label>
-        <input class="s" value="<?= mds_date('y/m/d',$print->timedispatch) ?>">
-        <label class="b">تاریخ ورود به مجموعه :</label>
-        <input class="s" value="<?= mds_date('y/m/d',$print->timearrival) ?>">
-        <!--  line-->
-        <label>با درجه :</label>
-        <input value="<?= $print->rating ?>">
-        <label>جمعی :</label>
-        <input value="<?= '-' ?>مجاز است">
-        <!--  line-->
-        <label>از ساعت :</label>
-        <input value="<?= mds_date('h:i',$print->times) ?>">
-        <label>تاریخ :</label>
-        <input value="<?= mds_date('y/m/d',$print->times) ?>">
-        <!--  line-->
-        <label>تا ساعت :</label>
-        <input value="<?= mds_date('h:i',$print->timef) ?>">
-        <label>تاریخ :</label>
-        <input value="<?= mds_date('y/m/d',$print->timef)?>">
-        <!--  line-->
-        <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb" >ساعت از مرخصی ساعتی استفاده نماید.</label>
-        <!--  line-->
-        <label class="b">علت درخواست مرخصی:</label>
-        <textarea><?=$print->description?></textarea>
-        <!--  line-->
-        <i class="r">
-            <span>مهر و امضای</span>
-            <span>مسئول قسمت </span>
-        </i>
-        <i class="c">
-            <span>مهر و امضای</span>
-            <span> گردان قرارگاه</span>
-        </i>
+    </div>
+    <div class="s1 ln">
+        <p  >مشخصات فرد مورد تنبیه :</p>
 
-        <i class="l">
-            <span>مهر و امضای</span>
-            <span>نیروی انسانی </span>
-        </i>
+        <label>نام و نام خانوادگی :</label>
+        <input value="<?=$print->name.' '.$print->family ?>">
+        <label>نام پدر :</label>
+        <input value="<?=$print->father ?>">
+        <!--  line-->
+        <label>شماره ملی</label>
+        <input value="<?=$print->nationalcode ?>">
+        <label>میزان تحصیلات :</label>
+        <input value="<?=$print->education ?>">
+        <!--  line-->
+        <label>دین</label>
+        <input value="<?=$print->religion ?>">
+        <label>مذهب:</label>
+        <input value="<?=$print->sect ?>">
+        <!--  line-->
+        <label class="b">تاریخ اعزام به خدمت:</label>
+        <input class="s" value="<?=mds_date('Y/m/d',$print->timedispatch) ?>">
+        <label class="b">تاریخ ورود به مجموعه:</label>
+        <input class="s" value="<?=mds_date('Y/m/d',$print->timearrival) ?>">
 
+        <!--  line-->
+        <label>درجه</label>
+        <input value="<?=$print->rating ?>">
+        <label>وضعیت تاهل:</label>
+        <input value="<?=$print->name ?>">
+
+        <!--  line-->
+        <label class="b">وضعیت سلامتی جسمانی:</label>
+        <input class="s" value="<?=health($print->health) ?>">
+        <label class="b">وضعیت سلامتی روانی :</label>
+        <input class="s" value="<?=$print->mental ?>">
+        <!--  line-->
+        <label>وضعیت بومی</label>
+        <input value="<?=boomi($print->boomi) ?>">
+        <label>واحد خدمت:</label>
+        <input value="<?=$print->serviceunit ?>">
+        <!--  line-->
+    </div>
+    <div class="s1 ln">
+        <p  >نوع عمل قابل تنبیه :</p>
+
+        <label class="b">غیبت از تاریخ</label>
+        <input class="s" value="<?=mds_date('Y/m/d',$print->times) ?>">
+        <label class="b">تا تاریخ:</label>
+        <input class="s" value="<?=mds_date('Y/m/d',$print->timef) ?>">
+        <!--   ln-->
+        <label>توضیحات:</label>
+        <textarea><?=$print->text ?></textarea>
+    </div>
+    <div class="s1 ln">
+        <p  >نوع تنبیهی :</p>
+        <label class="s">خلا به  مدت:</label>
+        <input class="s" value="<?= $print->delay?>">
+        <label class="b">روز و اضافه خدمت به مدت (روز)</label>
+        <input class="s" value="<?= $print->day?>">
+    </div>
+    <div class="s1 ln">
+        <p>مواد استنادی آیین نامه انضباطی یا قانون :</p>
+        <input value="<?=$print->rule ?>">
     </div>
     <div class="s1">
-        <label class="b">بدین وسیله برادر وظیفه :</label>
-        <input class="b" value="<?= $print->name . ' '. $print->family ?>">
-        <label>مجاز است</label>
-
-        <label>از ساعت :</label>
-        <input value="<?= mds_date('h:i',$print->times) ?>">
-        <label>تاریخ :</label>
-        <input value="<?= mds_date('y/m/d',$print->times) ?>">
-        <!--  line-->
-        <label>تا ساعت :</label>
-        <input value="<?= mds_date('h:i',$print->timef) ?>">
-        <label>تاریخ :</label>
-        <input value="<?= mds_date('y/m/d',$print->timef)?>">
-        <!--  line-->
-        <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb">ساعت از مرخصی ساعتی استفاده نماید.</label>
-        <br>
-        <i class="l">
+        <i class="r">
             <span>مهر و امضای</span>
-            <span>نیروی انسانی </span>
+            <span>پیشنهاد دهنده</span>
         </i>
 
+        <i class="l">
+            <span>مهر و امضای</span>
+            <span>اجرا کننده</span>
+        </i>
     </div>
-
 
 </section>
 

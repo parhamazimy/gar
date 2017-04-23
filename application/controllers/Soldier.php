@@ -103,141 +103,17 @@ class soldier extends CI_Controller {
 
         $this->blade->display('soldier.profile');
     }
-    //////////////////////
-    //
-    ////////////////////////
-    function register()
-    {
-        $this->load->helper('time');
-        $this->load->model('model_units');
-        if($this->input->post('nationalcode') and $this->input->post('fieldofStudy')){
-
-            $arrayinsert = $this->input->post();
 
 
-            $timearrival = register_helper($this->input->post('timearrival'));
-            $timedispatch = register_helper($this->input->post('timedispatch'));
-            $timefinish = register_helper($this->input->post('timefinish'));
-            $timelastfinish = register_helper($this->input->post('timelastfinish'));
 
 
-            $arrayinsert['timearrival'] = $timearrival;
-            $arrayinsert['timedispatch'] = $timedispatch;
-            $arrayinsert['timefinish'] = $timefinish;
-            $arrayinsert['timelastfinish'] = $timelastfinish;
 
-            $insertid = $this->model_units->insert($arrayinsert);
-
-            //upload
-            if(isset($_FILES['userfile']) and !empty($insertid)){
-                $config['upload_path']          = './public/img/users/';
-                $config['allowed_types']        = 'jpg|png|jpeg';
-                $config['max_size']             = 1024;
-                $config['max_width']            = 1920;
-                $config['max_height']           = 1080;
-                $config['file_name']           =   $this->session->userdata('id');
-                $config['allowed_types']        = 'jpg|png|jpeg';
-                $config['max_size']             = 1024;
-                $config['max_width']            = 1920;
-                $config['max_height']           = 1080;
-                $config['file_name']           = $insertid;
-                $config['overwrite']           = true;
-                $this->load->library('upload', $config);
-                if ( ! $this->upload->do_upload('userfile'))
-                {
-                    $error =  $this->upload->display_errors();
-                    $this->model_units->delete($insertid);
-                    $this->blade->data('message',$error);
-                }else{
-                    $path = $this->upload->data('file_name');
-                    $upload = $this->model_units->update(['pic'=>$path],$insertid);
-                    if($upload){
-                        $this->blade->data('message','ثبت نام با موفقیت انجام شد .');
-                    }else{
-                        // $this->blade->data('message','خطادر پایگاه داده');
-                        $this->blade->data('message','ثبت نام با موفقیت انجام شد .!!');
-                    }
-                }
-            }else{
-                $this->blade->data('message','خطا .!!');
-            }
-            //
-
-        }
-        $this->blade->data('title','ثبت نیرو');
-        $this->blade->display('soldier.register');
-
-    }
-
-
-    /////////////////////////
-    //
-    ////////////////////////
-    function units()
-    {
-        $this->load->model('model_units');
-        if($this->input->post('deleteid')){
-            $result = $this->model_units->delete($this->input->post('deleteid'));
-            if($result){
-                $this->blade->data('message','حذف شد');
-            }else{
-                $this->blade->data('message','خطا');
-            }
-        }
-        $this->load->helper('time');
-        $this->blade->data('title','مدیریت کاربران');
-
-        $users = $this->model_units->all();
-        $this->blade->data('users',$users);
-        $this->blade->display('soldier.units');
-    }
-    //////////////////////////////////
-    //
-    ///////////////////////////////
-    function edit()
-    {
-        $this->blade->data('title','ویرایش نیروها');
-        $this->load->helper('time');
-        if(!$this->input->post('editid')){
-            redirect('cadre/units');
-        }
-        $this->load->model('model_units');
-        $user = $this->model_units->find($this->input->post('editid'));
-        if(!$user){
-            redirect('cadre/users');
-        }
-        //update
-        if($this->input->post('weight')){
-            $arrayinsert = $this->input->post();
-            unset($arrayinsert['editid']);
-            $timedispatch = register_helper($this->input->post('timedispatch'));
-            $timearrival = register_helper($this->input->post('timearrival'));
-            $timefinish = register_helper($this->input->post('timefinish'));
-            $timelastfinish = register_helper($this->input->post('timelastfinish'));
-
-            $arrayinsert['timedispatch'] = $timedispatch;
-            $arrayinsert['timearrival'] = $timearrival;
-            $arrayinsert['timefinish'] = $timefinish;
-            $arrayinsert['timelastfinish'] = $timelastfinish;
-            $update = $this->model_units->update($arrayinsert,$this->input->post('editid'));
-
-            if($update){
-                $this->blade->data('message','انجام شد');
-            }else{
-                $this->blade->data('message','تغییری ثبت نشد');
-            }
-        }
-        //
-        $user = $this->model_units->find($this->input->post('editid'));
-        $this->blade->data('user',$user);
-        $this->blade->display('soldier.edit');
-    }
     //////////////////////////////
     //
     //////////////////////////////
     function event2()
     {
-        $this->blade->data('title','ثبت رویداد نوع 2');
+        $this->blade->data('title','ثبت رویدادهای ساعتی');
         $this->load->model('model_units');
         //post
         if($this->input->post('status') != null){
@@ -298,7 +174,7 @@ class soldier extends CI_Controller {
         }
         $vacations = $this->model_vacations->all();
         $this->blade->data('vacations',$vacations);
-        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->data('title','لیست رویداد های ساعتی');
         $this->blade->display('soldier.event2_list');
     }
     ///////////////////////
@@ -306,7 +182,7 @@ class soldier extends CI_Controller {
     //////////////////////
     function event()
     {
-        $this->blade->data('title','ثبت رویداد نوع 1');
+        $this->blade->data('title','ثبت تنبیهات و تشویقات');
         $this->load->model('model_units');
         $this->load->model('model_event');
         //post
@@ -371,7 +247,7 @@ class soldier extends CI_Controller {
         }
         $vacations = $this->model_event->all();
         $this->blade->data('vacations',$vacations);
-        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->data('title','لیست  تنبیهات و تشویقات');
         $this->blade->display('soldier.event_list');
     }
     ////////////////////////////////
@@ -379,7 +255,7 @@ class soldier extends CI_Controller {
     ////////////////////////////////
     function leave()
     {
-        $this->blade->data('title','ثبت رویداد نوع 1');
+        $this->blade->data('title','ثبت رویداد های روزانه');
         $this->load->model('model_units');
         $this->load->model('model_leave');
         //post
@@ -452,7 +328,7 @@ class soldier extends CI_Controller {
         }
         $vacations = $this->model_leave->all();
         $this->blade->data('vacations',$vacations);
-        $this->blade->data('title','لیست مرخصی  ها');
+        $this->blade->data('title','لیست رویداد های روزانه');
         $this->blade->display('soldier.leave_list');
 
     }

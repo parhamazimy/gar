@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">رویداد ها</h2>
+        <h2 class="page-title">تنبیهات و تشویقات</h2>
         <ol class="breadcrumb">
             <li><a href="{{base_url('admin/index')}}.html">پنل کادر</a></li>
-            <li><span>رویداد ها</span></li>
+            <li><span>تنبیهات و تشویقات</span></li>
         </ol>
     </div>
     <div class="panel" id="basic">
         <div class="panel-heading b#ffe7ff">
             <i class="fa fa-road sort-hand"></i>
-            رویداد ها
+            تنبیهات و تشویقات
             <div class="pan-btn expand min"></div>
         </div>
         <div class="panel-body">
@@ -102,7 +102,7 @@
     {!! form_close() !!}
     {!! form_open('admin/edit','style="display: none" id="edit" ') !!}
     {!! form_close() !!}
-    {!! form_open('printer/vacation','style="display: none" id="print" ') !!}
+    {!! form_open('printer/event','style="display: none" id="print" ') !!}
     {!! form_close() !!}
 @endsection
 @section('js')

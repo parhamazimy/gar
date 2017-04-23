@@ -89,8 +89,8 @@
         border: none;
         width: 90%;
         padding: 2mm 5mm;
-        min-height: 25mm;
-        max-height: 10mm;
+        min-height: 11mm;
+        max-height: 11mm;
     }
     .c{
         float: none;
@@ -105,6 +105,20 @@
     }
     .dot{
         border-bottom: 1mm dotted black;
+    }
+    .mm{
+        display: inline-block;
+        width: 21%;
+        margin-top: 2mm;
+        margin-right: 4mm;
+        text-align: center;
+    }
+    .mm span{
+        text-align: center;
+        display: block;
+    }
+    .min{
+        width: 5%;
     }
 
 </style>
@@ -147,12 +161,29 @@
         <input value="<?= mds_date('y/m/d',$print->timef)?>">
         <!--  line-->
         <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb" >ساعت از مرخصی ساعتی استفاده نماید.</label>
+        <input class="s" value="<?= $print->time ?>">
+        <label class="bb" >روز از مرخصی بلند مدت استفاده نماید.</label>
         <!--  line-->
+        <label class="min">تعطیلی</label>
+        <input class="min" value="<?=$print->closures?>">
+        <label >استحقاقی</label>
+        <input class="min" value="<?=$print->entitlement?>">
+        <label>روز-بین راهی</label>
+        <input class="min"  value="<?=$print->way?>">
+<!--        line-->
+        <label class="min">تشویقی</label>
+        <input  value="<?=$print->encouragement?>  روز ">
+        <label >روز-استراحتی</label>
+        <input class="min" value="<?=$print->rest?>">
+        <label>روز</label>
+        <br>
+
+
+
         <label class="b">علت درخواست مرخصی:</label>
-        <textarea><?=$print->description?></textarea>
+        <textarea><?=$print->text?></textarea>
         <!--  line-->
+
         <i class="r">
             <span>مهر و امضای</span>
             <span>مسئول قسمت </span>
@@ -184,8 +215,8 @@
         <input value="<?= mds_date('y/m/d',$print->timef)?>">
         <!--  line-->
         <label class="s">به مدت :</label>
-        <input class="s" value="<?= $print->hour ?>">
-        <label class="bb">ساعت از مرخصی ساعتی استفاده نماید.</label>
+        <input class="s" value="<?= $print->time ?>">
+        <label class="bb">روز از مرخصی بلند مدت استفاده نماید.</label>
         <br>
         <i class="l">
             <span>مهر و امضای</span>

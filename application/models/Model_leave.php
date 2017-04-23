@@ -39,4 +39,12 @@ class model_leave extends CI_Model
 
     }
 
+    function find($id){
+        $this->db->where('`leave`.`leaveid`',$id);
+        $this->db->select(' * ,leave.text AS text');
+        $this->db->join('units', 'units.id = leave.unitid');
+        return   $this->db->get($this->table)->row();
+
+    }
+
 }

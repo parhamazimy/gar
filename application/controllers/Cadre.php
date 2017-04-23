@@ -234,7 +234,7 @@ class cadre extends CI_Controller
     //////////////////////////////
     function event2()
     {
-        $this->blade->data('title','ثبت رویداد نوع 2');
+        $this->blade->data('title','ثبت رویداد ساعتی');
         $this->load->model('model_units');
         //post
         if($this->input->post('status') != null){
@@ -295,7 +295,7 @@ class cadre extends CI_Controller
         }
         $vacations = $this->model_vacations->all();
         $this->blade->data('vacations',$vacations);
-        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->data('title','لیست رویداد های ساعتی');
         $this->blade->display('cadre.event2_list');
     }
     ///////////////////////
@@ -303,7 +303,7 @@ class cadre extends CI_Controller
     //////////////////////
     function event()
     {
-        $this->blade->data('title','ثبت رویداد نوع 1');
+        $this->blade->data('title','ثبت تشویقات و تنبیهات');
         $this->load->model('model_units');
         $this->load->model('model_event');
         //post
@@ -368,7 +368,7 @@ class cadre extends CI_Controller
         }
         $vacations = $this->model_event->all();
         $this->blade->data('vacations',$vacations);
-        $this->blade->data('title','لیست رویداد ها');
+        $this->blade->data('title','لیست تنبیهات و تشویقات');
         $this->blade->display('cadre.event_list');
     }
     ////////////////////////////////
@@ -376,7 +376,7 @@ class cadre extends CI_Controller
     ////////////////////////////////
     function leave()
     {
-        $this->blade->data('title','ثبت رویداد نوع 1');
+        $this->blade->data('title','ثبت رویداد روزانه');
         $this->load->model('model_units');
         $this->load->model('model_leave');
         //post
@@ -449,7 +449,7 @@ class cadre extends CI_Controller
         }
         $vacations = $this->model_leave->all();
         $this->blade->data('vacations',$vacations);
-        $this->blade->data('title','لیست مرخصی  ها');
+        $this->blade->data('title','لیست رویداد های روزانه');
         $this->blade->display('cadre.leave_list');
 
     }

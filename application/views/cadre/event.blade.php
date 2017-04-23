@@ -4,16 +4,16 @@
 @endsection
 @section('content')
     <div class="page-header t#455a64" style="color: rgb(69, 90, 100);">
-        <h2 class="page-title">ثبت رویداد نوع یک</h2>
+        <h2 class="page-title">ثبت تنبیهات و تشویقات</h2>
         <ol class="breadcrumb">
             <li><a href="{{base_url('cadre')}}.html">پنل کادر</a></li>
-            <li><span>ثبت رویداد نوع یک</span></li>
+            <li><span>ثبت تنبیهات و تشویقات</span></li>
         </ol>
     </div>
     <div class="panel">
 
         <div class="panel-heading b#c6f9ff ">
-            <i class="fa fa-flash sort-hand"></i>ثبت رویداد نوع یک
+            <i class="fa fa-flash sort-hand"></i>ثبت تنبیهات و تشویقات
             <div class="pan-btn min"></div>
         </div>
         <div class="panel-body ">
